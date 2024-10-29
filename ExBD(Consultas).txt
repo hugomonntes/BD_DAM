@@ -1,0 +1,12 @@
+1.	SELECT * FROM jugadores;
+2.	SELECT * FROM jugadores ORDER BY Nombre;
+3.	SELECT nombre, Puntos, Valoracion FROM jugadores;
+4.	SELECT * FROM jugadores ORDER BY Valoracion DESC, Nombre ASC;
+5.	SELECT * FROM `jugadores` ORDER BY Valoracion DESC, Nombre ASC;
+6.	SELECT * FROM `jugadores` where Minutos > 35;
+7.	SELECT * FROM `jugadores` WHERE nombre='Kobe Bryant';
+8.	SELECT nombre, puntos FROM `jugadores` WHERE valoracion >= 3;
+9.	SELECT * FROM `jugadores` WHERE Nombre LIKE "Kobe Bryant";
+10.	SELECT * FROM `jugadores` WHERE partidos > 800 OR Valoracion = 3 ORDER BY Puntos, Nombre; SELECT * FROM `jugadores` WHERE partidos > 800 OR Valoracion = 3 ORDER BY Puntos AND Nombre;
+11.	SELECT * FROM `jugadores` WHERE Partidos BETWEEN 800 AND 1000;
+
