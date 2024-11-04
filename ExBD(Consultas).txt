@@ -25,4 +25,6 @@
 25. SELECT nombre, Partidos*0.25 AS "25%" FROM `jugadores`;
 26. SELECT Nombre AS "nom", Puntos AS "pun", Rebotes AS "reb" FROM `jugadores`;
 27. SET @jugon=5; SELECT Nombre FROM `jugadores` WHERE Valoracion = @jugon;
-28. 
+28. SELECT nombre FROM jugadores WHERE Tapones <=> NULL;
+28. SELECT nombre FROM jugadores WHERE Tapones IS NOT NULL;
+29. 
