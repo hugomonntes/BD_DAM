@@ -21,7 +21,7 @@
 21. SELECT * FROM `jugadores` WHERE Nombre LIKE '%L' AND Rebotes > 5;
 22. SELECT * FROM `jugadores` WHERE Nombre LIKE '_A%';
 23. SELECT DISTINCT Valoracion FROM `jugadores`;
-24. SELECT *, Rebotes+Asistencias+Tapones FROM `jugadores`; 
+24. SELECT Nombre, Rebotes+Asistencias+Tapones FROM `jugadores`; 
 25. SELECT nombre, Partidos*0.25 AS "25%" FROM `jugadores`;
 26. SELECT Nombre AS "nom", Puntos AS "pun", Rebotes AS "reb" FROM `jugadores`;
 27. SET @jugon=5; SELECT Nombre FROM `jugadores` WHERE Valoracion = @jugon;
