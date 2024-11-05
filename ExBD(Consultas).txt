@@ -29,7 +29,7 @@
 28. SELECT nombre FROM jugadores WHERE Tapones IS NOT NULL;
 29. SELECT nombre FROM jugadores WHERE Partidos = 1093 OR Partidos = 697 OR Partidos = 926 OR Partidos = 687;
 29. SELECT nombre FROM jugadores WHERE IN (1093,697,926,687);
-30. SELECT nombre FROM jugadores WHERE Partidos != 1093 OR Partidos != 697 OR Partidos != 926 OR Partidos != 687;
+30. SELECT nombre FROM jugadores WHERE Partidos != 1093 AND Partidos != 697 AND Partidos != 926 AND Partidos != 687;
 30. SELECT nombre FROM jugadores WHERE NOT IN (1093,697,926,687);
 31. SELECT nombre FROM jugadores WHERE Puntos BETWEEN 17 AND 24;
 32. SELECT "El jugador", Nombre, "ha metido", Puntos, "puntos" FROM jugadores; 
