@@ -32,5 +32,8 @@
 30. SELECT nombre FROM jugadores WHERE Partidos != 1093 AND Partidos != 697 AND Partidos != 926 AND Partidos != 687;
 30. SELECT nombre FROM jugadores WHERE NOT IN (1093,697,926,687);
 31. SELECT nombre FROM jugadores WHERE Puntos BETWEEN 17 AND 24;
+31. SELECT nombre FROM jugadores WHERE Puntos >= 17 AND Puntos <= 24;
 32. SELECT "El jugador", Nombre, "ha metido", Puntos, "puntos" FROM jugadores; 
-33. 
+33. SELECT nombre, IF (Puntos >= 10 AND Rebotes >= 10,'Si','No') FROM jugadores;
+34. SELECT IFNULL(Puntos,0) + IFNULL(Tapones,0) + IFNULL(Rebotes,0) FROM jugadores;
+35. SELECT IF(Puntos + Rebotes + Tapones, IS NULL, 'ES NULO', '') AS 'TIENE NULOS' FROM jugadores;
