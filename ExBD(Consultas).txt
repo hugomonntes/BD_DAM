@@ -3,7 +3,7 @@
 3.  SELECT nombre, Puntos, Valoracion FROM jugadores;
 4.  SELECT * FROM jugadores ORDER BY Valoracion DESC, Nombre ASC;
 5.  SELECT * FROM `jugadores` ORDER BY Valoracion DESC, Nombre ASC;
-6.  SELECT * FROM `jugadores` where Minutos > 35;
+6.  SELECT * FROM `jugadores` WHERE Minutos > 35;
 7.  SELECT * FROM `jugadores` WHERE nombre='Kobe Bryant';
 8.  SELECT nombre, puntos FROM `jugadores` WHERE valoracion >= 3;
 9.  SELECT * FROM `jugadores` WHERE Valoracion > 5 AND Puntos < 20 ORDER BY Nombre;
