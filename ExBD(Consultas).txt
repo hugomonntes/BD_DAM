@@ -37,3 +37,5 @@
 33. SELECT nombre, IF (Puntos >= 10 AND Rebotes >= 10,'Si','No') FROM jugadores;
 34. SELECT IFNULL(Puntos,0) + IFNULL(Tapones,0) + IFNULL(Rebotes,0) FROM jugadores;
 35. SELECT IF(Puntos + Rebotes + Tapones, IS NULL, 'ES NULO', '') AS 'TIENE NULOS' FROM jugadores;
+36. SELECT IFNULL(Tapones, Nombre) AS Resultado FROM jugadores
+37. SELECT 
