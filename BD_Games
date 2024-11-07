@@ -1,1 +1,6 @@
-1. SELECT * FROM juegos
+1. SELECT DISTINCT plataforma FROM `juegos`;
+2. SELECT * FROM `juegos` WHERE precioAlquiler > 4 AND precioAlquiler < 6;
+3. SELECT * FROM `juegos` ORDER BY plataforma, nombre DESC;
+4. SELECT nombre, precioVenta FROM `juegos` WHERE precioVenta < 40;
+5. SELECT * FROM `juegos` WHERE plataforma = 'PC';
+6. 
