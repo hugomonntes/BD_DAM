@@ -41,4 +41,4 @@
 36. SELECT Tapones CASE WHEN Tapones IS NULL THEN Nombre ELSE Tapones END AS Tapones FROM Jugadores;
 37. SELECT Nombre, IF(Valoracion = 1, 'Paquete', IF(Valoracion = 2, 'Normal', IF(Valoracion = 3, 'Bueno', IF(Valoracion = 4, 'Estrella', 'Jugón')))) FROM jugadores;
 38. SELECT Nombre, CASE WHEN Valoracion = 5 THEN 'Jugón' ELSE Valoracion = 4 THEN 'Estrella' END AS '' FROM Jugadores;
-39.SELECT Nombre, CASE WHEN Partidos > 1000 THEN 'Carrera larga' WHEN Partidos > 900 AND Partidos <= 1000 THEN 'Carrera normal' ELSE 'Carrera corta' END AS "Tiempo ha jugado" FROM jugadores;
+39. SELECT Nombre, CASE WHEN Partidos > 1000 THEN 'Carrera larga' WHEN Partidos > 900 AND Partidos <= 1000 THEN 'Carrera normal' ELSE 'Carrera corta' END AS "Tiempo ha jugado" FROM jugadores;
