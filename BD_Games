@@ -8,6 +8,6 @@
 8. SELECT id,nombre,precioVenta FROM `juegos` WHERE precioVenta < 20 OR precioVenta > 30 ORDER BY precioVenta ASC;
 9. SELECT DISTINCT plataforma FROM `juegos` WHERE precioAlquiler = 4;
 10. SELECT nombre FROM `juegos` WHERE stockAlquiler IS NULL;
-11. SELECT * FROM `juegos` WHERE plataforma != "PSP" AND precioVenta BETWEEN 20 AND 50 ORDER BY nombre DESC;
+11. SELECT * FROM `juegos` WHERE plataforma != "PSP" AND precioVenta BETWEEN 20 AND 50 ORDER BY nombre DESC; // SELECT * FROM `juegos` WHERE plataforma IN('xbox', 'pc', 'playstation') AND precioVenta BETWEEN 20 AND 50 ORDER BY nombre DESC;
 12. SELECT * FROM `juegos` WHERE precioAlquiler IN(3,5,8);
-
+13. 
