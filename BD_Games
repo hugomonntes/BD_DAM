@@ -27,4 +27,11 @@
 27. /* X */
 28. SELECT nombre, stockVenta FROM `juegos` WHERE stockVenta NOT BETWEEN 8 AND 15;
 29. SELECT @stock := stockAlquiler AS 'Stock' FROM `juegos` WHERE id = 6;
-30. 
+30. SET @stock := 4; SELECT * FROM `juegos` WHERE stockAlquiler > @stock;
+31. SELECT nombre, precioAlquiler FROM `juegos` WHERE precioAlquiler IS NOT NULL; /* The Dig no tiene que aparecer */
+32. SELECT nombre , @stockTotal := IFNULL(stockAlquiler, 0) + IFNULL(stockVenta, 0) AS 'stockTotal' FROM `juegos`;
+33. SELECT nombre , @stockTotal := IFNULL(stockAlquiler, 0) + IFNULL(stockVenta, 0) AS 'stockTotal', IF(@stockTotal >= 10, 'Suficiente', 'No suficiente') AS 'Suficiencia' FROM `juegos`;
+34. SELECT nombre, IF(stockAlquiler > 0, stockAlquiler, 'No queda stock') AS 'Mensaje' FROM `juegos`;
+35. SELECT nombre,@sumaStock := IFNULL(stockAlquiler, 0) + IFNULL(stockVenta, 0) AS 'Stock', IF(@sumaStock >= 10, 'Suficiente', 'No suficiente') AS 'Mensaje' FROM `juegos` ORDER BY @sumaStock DESC LIMIT 5;
+36. SELECT nombre, plataforma, IF(plataforma = 'PC', 'Varios', IF(plataforma = 'XBOX', 'Microsoft', IF(plataforma = 'PSP' OR plataforma = 'Playstation', 'Sony', ''))) AS 'Fabricante' FROM `juegos`;
+37. 
