@@ -24,4 +24,7 @@
 24. SELECT nombre,precioAlquiler,@tripleAlquiler := precioAlquiler*3 AS 'Alquiler * 3' FROM `juegos`;
 25. SELECT nombre,precioVenta,stockVenta,@venta := precioVenta * stockVenta AS 'VENTA' FROM `juegos` ORDER BY stockVenta DESC LIMIT 1; /* CORREGIR ORDER BY */
 26. SELECT precioAlquiler , precioVenta, ROUND(@alquilerPesetas := precioAlquiler * 166) AS 'pesetasAlquiler', ROUND(@ventaPesetas := precioVenta * 166) AS 'pesetasVenta' FROM `juegos`;
-27. 
+27. /* X */
+28. SELECT nombre, stockVenta FROM `juegos` WHERE stockVenta NOT BETWEEN 8 AND 15;
+29. SELECT @stock := stockAlquiler AS 'Stock' FROM `juegos` WHERE id = 6;
+30. 
