@@ -34,4 +34,6 @@
 34. SELECT nombre, IF(stockAlquiler > 0, stockAlquiler, 'No queda stock') AS 'Mensaje' FROM `juegos`;
 35. SELECT nombre,@sumaStock := IFNULL(stockAlquiler, 0) + IFNULL(stockVenta, 0) AS 'Stock', IF(@sumaStock >= 10, 'Suficiente', 'No suficiente') AS 'Mensaje' FROM `juegos` ORDER BY @sumaStock DESC LIMIT 5;
 36. SELECT nombre, plataforma, IF(plataforma = 'PC', 'Varios', IF(plataforma = 'XBOX', 'Microsoft', IF(plataforma = 'PSP' OR plataforma = 'Playstation', 'Sony', ''))) AS 'Fabricante' FROM `juegos`;
-37. 
+37. SELECT nombre, IF(plataforma = 'PC', 'Ordenador', IF(plataforma = 'XBOX' OR plataforma = 'Playstation', 'Consola', IF(plataforma = 'PSP', 'Consola Portátil', ''))) AS 'Fabricante' FROM `juegos`;
+37. SELECT nombre, CASE plataforma WHEN plataforma = 'PC' THEN 'Ordenador' WHEN plataforma = 'Xbox' OR plataforma = 'Playstation' THEN 'Consola' WHEN plataforma = 'PSP' THEN 'Consola Portátil' ELSE '' END FROM `juegos`;
+38. SELECT nombre, @beneficio := IFNULL(stockAlquiler, 0) * IFNULL(precioAlquiler, 0) + IFNULL(stockVenta, 0) * IFNULL(precioVenta, 0) AS 'Beneficio', IF(@beneficio > 300, 'Rentable', IF(@beneficio BETWEEN 100 AND 300, 'Rentabilidad Media', 'Rentabilidad Baja')) AS 'Rentabilidad' FROM `juegos`;
