@@ -1,0 +1,3 @@
+SELECT nombre FROM tblusuarios;
+SELECT sexo, saldo FROM tblusuarios WHERE sexo = 'M' ORDER BY saldo DESC;
+SELECT nombre, telefono, marca FROM tblusuarios WHERE marca = 'NOKIA' OR marca = 'BLACKBERRY' OR marca = 'SONY';
