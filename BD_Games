@@ -15,7 +15,7 @@
 15. SELECT * FROM `juegos` WHERE nombre NOT LIKE('%&%');
 16. SELECT DISTINCT plataforma FROM `juegos` WHERE plataforma LIKE('%P%');
 17. SELECT DISTINCT nombre FROM `juegos` WHERE nombre LIKE('M%');
-18. SELECT nombre, plataforma FROM `juegos` WHERE nombre LIKE('L%') AND stockVenta > 10;
+18. SELECT nombre, plataforma FROM `juegos` WHERE nombre LIKE('L%') AND (stockVenta + stockAlquiler) > 10;
 19. SELECT nombre FROM `juegos` WHERE nombre LIKE('L%N%') OR nombre LIKE('M%N%');
 20. SELECT * FROM `juegos` WHERE (stockVenta BETWEEN 1 AND 10 AND stockVenta NOT BETWEEN 30 AND 40) AND nombre LIKE ('%O%'); /* REVISAR */
 21. SELECT * FROM `juegos` WHERE nombre LIKE '_a%' OR nombre LIKE '_e%' OR nombre LIKE '_i%' OR nombre LIKE '_o%' OR nombre LIKE '_u%';
