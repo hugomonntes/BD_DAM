@@ -14,3 +14,5 @@
     SELECT nombre, minutos, Ceil(Minutos) FROM `jugadores`;
 8. La siguiente lista son los posibles dorsales de los jugadores: 33, 32, 44, 22, 24, 42, 34, 4, 25 y 19. Como escogerías el dorsal más alto, y el más bajo.
     SELECT GREATEST(33, 32, 44, 22, 24, 42, 34, 4, 25, 19), LEAST(33, 32, 44, 22, 24, 42, 34, 4, 25, 19) FROM `jugadores` LIMIT 1;
+9. Obtén de dos formas diferentes los jugadores que tengan un cinco como parte entera de los rebotes.
+    
