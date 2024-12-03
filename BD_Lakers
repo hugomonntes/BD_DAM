@@ -1,0 +1,16 @@
+1. Muestra los puntos como el número entero superior al valor obtenido.
+    SELECT nombre, Ceil(puntos) FROM `jugadores`;
+2. Obtén el valor entero inmediatamente inferior de los minutos jugados.
+    SELECT nombre, floor(Minutos) FROM `jugadores`;
+3. Haya el número de valoraciones distintas.
+    SELECT COUNT(DISTINCT Valoracion) FROM `jugadores`;
+4. Calcula en la misma sentencia tres valores aleatorios.
+    SELECT RAND() AS 'Aleatorio 1',RAND() AS 'Aleatorio 2',RAND() AS 'Aleatorio 3' FROM `jugadores` LIMIT 1;
+5. Redondea con dos decimales el valor de minutos de los jugadores.
+    SELECT ROUND(Minutos, 2) FROM `jugadores`;
+6. Trunca un número aleatorio a tres decimales.
+    SELECT TRUNCATE(RAND(), 3) FROM `jugadores` LIMIT 1;
+7. Obtener el nombre, los minutos y el entero superior a los minutos de los jugadores.
+    SELECT nombre, minutos, Ceil(Minutos) FROM `jugadores`;
+8. La siguiente lista son los posibles dorsales de los jugadores: 33, 32, 44, 22, 24, 42, 34, 4, 25 y 19. Como escogerías el dorsal más alto, y el más bajo.
+    SELECT GREATEST(33, 32, 44, 22, 24, 42, 34, 4, 25, 19), LEAST(33, 32, 44, 22, 24, 42, 34, 4, 25, 19) FROM `jugadores` LIMIT 1;
