@@ -15,4 +15,6 @@
 8. La siguiente lista son los posibles dorsales de los jugadores: 33, 32, 44, 22, 24, 42, 34, 4, 25 y 19. Como escogerías el dorsal más alto, y el más bajo.
     SELECT GREATEST(33, 32, 44, 22, 24, 42, 34, 4, 25, 19), LEAST(33, 32, 44, 22, 24, 42, 34, 4, 25, 19) FROM `jugadores` LIMIT 1;
 9. Obtén de dos formas diferentes los jugadores que tengan un cinco como parte entera de los rebotes.
-    
+    SELECT nombre, rebotes, floor(Rebotes) AS 'Forma 1', TRUNCATE(Rebotes, 0) AS 'Forma 2' FROM 'jugadores' WHERE Rebotes >= 5 AND Rebotes < 6;
+10. Como se podría dada una lista devolver el primer valor no nulo. Pon un ejemplo.
+    SELECT COALESCE(NULL, NULL, 3, 5) AS 'Valor no nulo';
