@@ -18,3 +18,8 @@
     SELECT nombre, rebotes, floor(Rebotes) AS 'Forma 1', TRUNCATE(Rebotes, 0) AS 'Forma 2' FROM 'jugadores' WHERE Rebotes >= 5 AND Rebotes < 6;
 10. Como se podría dada una lista devolver el primer valor no nulo. Pon un ejemplo.
     SELECT COALESCE(NULL, NULL, 3, 5) AS 'Valor no nulo';
+11. Calcula el valor medio de todos los partidos jugados y el número de jugadores que los han jugado.
+    SELECT AVG(Partidos) AS 'Media', COUNT(Nombre) AS 'Total' FROM `jugadores`;
+12. Haya la suma de los partidos así como el mayor número de partidos y el menor.
+    SELECT SUM(Partidos) AS 'Partidos Totales', MAX(Partidos) AS 'MAX', MIN(Partidos) AS 'MIN' FROM `jugadores`;
+13. Obtén con un con redondeo a 2 decimales el mayor de los siguientes valores de los jugadores: puntos/5, rebotes/2 o asistencias.
