@@ -23,3 +23,17 @@
 12. Haya la suma de los partidos así como el mayor número de partidos y el menor.
     SELECT SUM(Partidos) AS 'Partidos Totales', MAX(Partidos) AS 'MAX', MIN(Partidos) AS 'MIN' FROM `jugadores`;
 13. Obtén con un con redondeo a 2 decimales el mayor de los siguientes valores de los jugadores: puntos/5, rebotes/2 o asistencias.
+    SELECT ROUND(GREATEST(Puntos/5, Rebotes/2, Asistencias), 2) AS 'Mayor' FROM `jugadores`;
+14. Obtén el nombre de los jugadores en mayúsculas, el numero de caracteres que tiene su nombre y los 5 primeros caracteres de su nombre.
+    SELECT UPPER(Nombre) AS 'Mayúsculas', CHAR_LENGTH(Nombre) AS 'Nº Char Nombre', LEFT(Nombre, 5) AS '5 Primeros Chars' FROM jugadores;
+15. Haya la representación en binario de la longitud del nombre de los jugadores.
+     SELECT BIN(CHAR_LENGTH(Nombre)) AS 'Nº Char Nombre Binario' FROM jugadores;
+16. Devuelve en una única columna la cadena "El jugador " junto el nombre del jugador y la cadena al final "jugó en los Lakers":
+    SELECT CONCAT("EL jugador ", Nombre, " jugó en los Lakers" ) FROM jugadores;
+17. Devuelve los nombres de los jugadores con las "as" substituidas por 1 y los espacios por guiones bajos.
+    SELECT REPLACE(REPLACE (Nombre,'a','1'), ' ', '_') AS 'NOMBRE CAMBIADO' FROM `jugadores`;
+18. Devuelve los jugadores cuya segunda letra del nombre sea igual a la penúltima.
+    SELECT IF(SUBSTRING(Nombre, 2) = SUBSTRING(Nombre, -2), Nombre, 'Nah') FROM jugadores;
+19. Obtén la fecha y hora actual
+    
+    
