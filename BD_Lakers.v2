@@ -35,5 +35,9 @@
 18. Devuelve los jugadores cuya segunda letra del nombre sea igual a la penúltima.
     SELECT IF(SUBSTRING(Nombre, 2) = SUBSTRING(Nombre, -2), Nombre, 'Nah') FROM jugadores;
 19. Obtén la fecha y hora actual
+    SELECT CURRENT_DATE() ,NOW();
+20. Obtén el nombre del día, mes y el año de la fecha actual.
+    SELECT DAYNAME(NOW()) AS 'NOMBRE DIA ACTUAL', MONTH(NOW()) AS 'MES ACTUAL', YEAR(NOW()) AS 'AÑO ACTUAL';
+21. Consigue por separado las horas, minutos y segundos actuales.
     
     
