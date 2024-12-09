@@ -33,7 +33,7 @@
 17. Devuelve los nombres de los jugadores con las "as" substituidas por 1 y los espacios por guiones bajos.
     SELECT REPLACE(REPLACE (Nombre,'a','1'), ' ', '_') AS 'NOMBRE CAMBIADO' FROM `jugadores`;
 18. Devuelve los jugadores cuya segunda letra del nombre sea igual a la penúltima.
-    SELECT IF(SUBSTRING(Nombre, 2) = SUBSTRING(Nombre, -2), Nombre, 'Nah') FROM jugadores;
+    SELECT Nombre, substring(Nombre,2,1), substring(Nombre, -2,1) FROM `jugadores` WHERE substring(Nombre,2,1)=substring(Nombre, -2, 1);
 19. Obtén la fecha y hora actual
     SELECT CURRENT_DATE() ,NOW();
 20. Obtén el nombre del día, mes y el año de la fecha actual.
