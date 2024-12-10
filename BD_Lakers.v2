@@ -39,5 +39,15 @@
 20. Obtén el nombre del día, mes y el año de la fecha actual.
     SELECT DAYNAME(NOW()) AS 'NOMBRE DIA ACTUAL', MONTH(NOW()) AS 'MES ACTUAL', YEAR(NOW()) AS 'AÑO ACTUAL';
 21. Consigue por separado las horas, minutos y segundos actuales.
-    
+    SELECT HOUR(NOW()), MINUTE(NOW()), SECOND(NOW());
+22. Obtén la fecha actual y la fecha actual más un día.
+    SELECT NOW(), DATE_ADD(NOW(), INTERVAL 1 DAY);
+23. Obtén la fecha actual con el siguiente formato: Hoy es el día [día] de mes [mes] del año [año].
+    SELECT DATE_FORMAT(NOW(), "Hoy es el día %d de mes %M del año %y");
+24. Obtén la hora actual con el siguiente formato: la hora es [hora] y los minutos [minutos].
+    SELECT DATE_FORMAT(CURRENT_TIME(), "Hora %h y minuto %i");
+25. Compara las cadenas "abcdef" y "abcDEF" de forma sensible y no sensible al caso.
+    SELECT BINARY "abcdef" = "abcDEF", "abcdef" = "abcDEF";
+26. Ejecuta la sentencia: SELECT BENCHMARK(100000000,ENCODE('Hola','Adios')); ¿Qué indica el resultado?. 
+
     
