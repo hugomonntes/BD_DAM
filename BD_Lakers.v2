@@ -44,8 +44,10 @@
     SELECT NOW(), DATE_ADD(NOW(), INTERVAL 1 DAY);
 23. Obtén la fecha actual con el siguiente formato: Hoy es el día [día] de mes [mes] del año [año].
     SELECT DATE_FORMAT(NOW(), "Hoy es el día %d de mes %M del año %y");
+    SELECT CONCAT('Hoy es el dia ', DAY(NOW()), ' del mes ', MONTH(NOW()), ' del año ', YEAR(NOW())) AS 'FECHA';
 24. Obtén la hora actual con el siguiente formato: la hora es [hora] y los minutos [minutos].
     SELECT DATE_FORMAT(CURRENT_TIME(), "Hora %h y minuto %i");
+    SELECT CONCAT('La hora es ', HOUR(NOW()), ' y los minutos ', MINUTE(NOW())) AS 'HORAS Y MINUTOS';
 25. Compara las cadenas "abcdef" y "abcDEF" de forma sensible y no sensible al caso.
     SELECT BINARY "abcdef" = "abcDEF", "abcdef" = "abcDEF";
 26. Ejecuta la sentencia: SELECT BENCHMARK(100000000,ENCODE('Hola','Adios')); ¿Qué indica el resultado?. 
