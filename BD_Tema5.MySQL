@@ -1,3 +1,12 @@
+EJERCICIO GRUPAL TEMA 5
+
+1. SELECT APELLIDO, OFICIO, CODEMP FROM empleados;
+2. SELECT IDDEPART, NOMBRE, LOC FROM `depart`;
+3. SELECT * FROM `empleados` ORDER BY APELLIDO;
+4. SELECT * FROM `empleados` ORDER BY IDDEPART DESC;
+
+
+
 CREATE DATABASE IF NOT EXISTS `tema5`;
 USE `tema5`;
 
@@ -43,3 +52,4 @@ INSERT INTO `depart` (`IDDEPART`, `NOMBRE`, `LOC`) VALUES
 (20, 'Investigacion', 'Madrid'),
 (30, 'Ventas', 'Barcelona'),
 (40, 'Produccion', 'Vigo');
+
