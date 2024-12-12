@@ -50,6 +50,18 @@
     SELECT CONCAT('La hora es ', HOUR(NOW()), ' y los minutos ', MINUTE(NOW())) AS 'HORAS Y MINUTOS';
 25. Compara las cadenas "abcdef" y "abcDEF" de forma sensible y no sensible al caso.
     SELECT BINARY "abcdef" = "abcDEF", "abcdef" = "abcDEF";
-26. Ejecuta la sentencia: SELECT BENCHMARK(100000000,ENCODE('Hola','Adios')); ¿Qué indica el resultado?. 
+26. Ejecuta la sentencia: SELECT BENCHMARK(100000000,ENCODE('Hola','Adios')); ¿Qué indica el resultado?.
+    SELECT BENCHMARK(100000000,ENCODE('Hola','Adios')); (La consulta tardó 8,1720 segundos.)
+27. Obtén el identificador de conexión actual, el usuario actual y el numero de filas obtenidas en la última sentencia select.
+    SELECT CURRENT_USER(), FOUND_ROWS();
+28. Cifra el nombre del jugador como si fuese una contraseña mediante aes.
+    SELECT AES_ENCRYPT(Nombre, '1234') FROM jugadores;
+29. Descifra el nombre del jugador cifrado mediante aes.
+    SELECT AES_DECRYPT(AES_ENCRYPT(Nombre, '1234'), '1234') FROM jugadores;
+30. Comprueba que resultado obtienes cuando descifras mediante aes con la contraseña equivocada.
+    SELECT AES_DECRYPT(AES_ENCRYPT(Nombre, '1234'), '0') FROM jugadores; (Devuelve NULL)
+31. Formatea el numero 45345234.435 a 4 decimales.
+    SELECT FORMAT(45345234.435, 4);
+
 
     
