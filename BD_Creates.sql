@@ -57,3 +57,10 @@
     REFERENCE PERSONAS(ID),
     ENGINE = INNODB;
 )
+
+    **OPCIONES**
+
+4. ON DELETE RESTRICT --> Se puede eliminar si no tiene datos en la tabla
+5. ON UPDATE RESTRICT
+6. ON DELETE CASCADE --> Elimina a un usuario de la tabla si ya no lo tienes para que sus datos no ocupen
+7. ON DELETE SET NULL --> Si eliminas a alguien se cambia la FK por NULL
