@@ -60,7 +60,19 @@
 
     **OPCIONES**
 
-4. ON DELETE RESTRICT --> Se puede eliminar si no tiene datos en la tabla
-5. ON UPDATE RESTRICT
+4. ON DELETE RESTRICT --> Se puede eliminar si no tiene datos en la tabla, si no esta en uso el ID
 6. ON DELETE CASCADE --> Elimina a un usuario de la tabla si ya no lo tienes para que sus datos no ocupen
 7. ON DELETE SET NULL --> Si eliminas a alguien se cambia la FK por NULL
+
+    **MODIFICACION DE TABLAS**
+
+8.  ALTER TABLE ALUMNOS RENAME TO ESTUDIANTES; --> Cambiar nombre de tabla
+9.  ALTER TABLE ALUMNOS ADD EDAD INT; --> Añadir nueva columna
+10. ALTER TABLE ALUMNOS ADD (EDAD INT, PESO FLOAT); --> Añadir nueva columna
+11. ALTER TABLE ALUMNOS ADD EDAD INT FIRST; --> Colocar de primera la columna
+11. ALTER TABLE ALUMNOS ADD EDAD INT AFTER NOMBRE; --> Colocar despues la columna
+12. ALTER TABLE ALUMNOS CHANGE EDAD AÑOS INT; --> Cambiar nombre de la columna
+13. ALTER TABLE ALUMNOS MODIFY EDAD CHAR; --> Modificar datos columna de tabla
+14. ALTER TABLE ALUMNOS DROP NOMBRE; --> Borrar columna de una tabla
+15. ALTER TABLE ALUMNOS ADD PRIMARY KEY(ID); --> Añadir clave primaria a una columna
+15. ALTER TABLE ALUMNOS DROP PRIMARY KEY(ID); --> Borrar clave primaria a una columna
