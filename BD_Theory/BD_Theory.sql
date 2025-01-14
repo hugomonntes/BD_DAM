@@ -54,13 +54,14 @@
     NUM CHAR(12),
     PERSONA INT NOT NULL,
     FOREIGN KEY(PERSONA),
-    REFERENCE PERSONAS(ID),
+    REFERENCES PERSONAS(ID),
     ENGINE = INNODB;
 )
 
     **OPCIONES**
 
 4. ON DELETE RESTRICT --> Se puede eliminar si no tiene datos en la tabla, si no esta en uso el ID
+5. ON UPDATE RESTRICT / CASCADE
 6. ON DELETE CASCADE --> Elimina a un usuario de la tabla si ya no lo tienes para que sus datos no ocupen
 7. ON DELETE SET NULL --> Si eliminas a alguien se cambia la FK por NULL
 
@@ -76,3 +77,5 @@
 14. ALTER TABLE ALUMNOS DROP NOMBRE; --> Borrar columna de una tabla
 15. ALTER TABLE ALUMNOS ADD PRIMARY KEY(ID); --> Añadir clave primaria a una columna
 15. ALTER TABLE ALUMNOS DROP PRIMARY KEY(ID); --> Borrar clave primaria a una columna
+16. ALTER TABLE ALUMNOS ADD FOREIGN KEY(ID); --> Añadir clave foranea a una columna
+17. ALTER TABLE ALUMNOS DROP FOREIGN KEY(ID); --> Borrar clave foranea a una columna
