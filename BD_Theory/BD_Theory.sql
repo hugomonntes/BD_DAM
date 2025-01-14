@@ -79,3 +79,4 @@
 15. ALTER TABLE ALUMNOS DROP PRIMARY KEY(ID); --> Borrar clave primaria a una columna
 16. ALTER TABLE ALUMNOS ADD FOREIGN KEY(ID); --> Añadir clave foranea a una columna
 17. ALTER TABLE ALUMNOS DROP FOREIGN KEY(ID); --> Borrar clave foranea a una columna
+18. ALTER TABLE ALUMNOS ENGINE = INNODB; --> Cambiar motor de busqueda
