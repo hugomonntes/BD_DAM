@@ -1,7 +1,7 @@
 CREATE DATABASE IF NOT EXISTS BD2 CHARACTER SET = LATIN1;
 CREATE DATABASE IF NOT EXISTS BD3 CHARACTER SET = UTF8;
 
-CREATE TABLE JUEGOS.BD2 (
+CREATE TABLE BD2.JUEGOS (
 	IDJUEGO TINYINT AUTO_INCREMENT PRIMARY KEY,
 	NOMBRE CHAR(40) NOT NULL UNIQUE,
     PLATAFORMA SET ('PSP', 'WII', 'PLAYSTATION', 'XBOX', 'NINTENDO DS', 'PC') COMMENT 'Plataformas soportadas por el juego',
@@ -9,36 +9,46 @@ CREATE TABLE JUEGOS.BD2 (
     PRECIOALQUILER FLOAT(10,2),
     STOCKVENTA BIGINT DEFAULT 10 NOT NULL,
     STOCKALQUILER TINYINT ZEROFILL,
-    INDEX (PRECIOVENTA),
+    INDEX (PRECIOVENTA)
 );
 
+CREATE TABLE BD3.JuegosNuevos LIKE BD2.JUEGOS;
+RENAME TABLE BD3.JuegosNuevos TO BD3.NovosXogos;
+RENAME TABLE BD3.NovosXogos TO BD2.NovosXogos;
+DROP DATABASE IF EXISTS BD3;
+
+CREATE TABLE SOCIOS (
+    NUMEROSOCIO INT PRIMARY KEY AUTO_INCREMENT,
+    NOMBRE VARCHAR(15) NOT NULL,
+    APELLIDOS VARCHAR(35) NOT NULL,
+    DNI CHAR(9) UNIQUE COMMENT "EL DNI DEL SOCIO",
+    PAIS VARCHAR(20) NULL,
+    SEXO ENUM("H", "M"),
+    OBSERVACIONES TEXT,
+    INDEX (APELLIDOS)
+);
+
+CREATE TABLE ALQUILERES (
+    IDALQUILER INT AUTO_INCREMENT PRIMARY KEY,
+    NUMEROSOCIO MEDIUMINT NOT NULL COMMENT 'REFERENCIA A LA TABLA SOCIOS',
+    JUEGO SMALLINT NOT NULL COMMENT 'CÓDIGO DEL JUEGO',
+    FECHAALQUILER TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FECHADEVOLUCION DATETIME,
+    FOREIGN KEY (NUMEROSOCIO) REFERENCES SOCIOS(NUMEROSOCIO)
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT
+    ,
+    FOREIGN KEY (JUEGO) REFERENCES JUEGOS(IDJUEGO)
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT
+    )
+    ENGINE = InnoDB;
+
 /*
-4. Crea la tabla juegosNuevos en BD3 con la misma estructura que la tabla
-juegos de BD2.
-5. Renombra la tabla juegosNuevos a NovosXogos.
-6. Mueve la tabla NovosXogos de BD3 a BD2.
-7. Borra la base de datos BD3.1. Crea la base de datos BD2 con el juego de caracteres latin1 como defecto.
-2. Crea la base de datos BD3 con el juego de caracteres UTF como defecto.
-Crea mediante definición de creación las siguientes tablas. Todas tendrán como
-motor de almacenamiento InnoDB y como juego de caracteres UTF8. Todas las
-claves primarias se deben establecer a not null:
-3. Crear en la base de datos BD2 la tabla juegos con los siguientes campos:
-a. IDJuego: de tipo entero pequeño, clave principal, autoincrementado.
-b. Nombre: de tipo texto de longitud fija máxima 40, no puede ser nulo y
-tiene que ser único.
-c. Plataforma: puede contener alguno de los siguientes valores: PSP, Wii,
-Playstation, XBOX, Nintendo DS, PC a la que le añadimos la descripción
-“Plataformas soportadas por el juego”.
-d. PrecioVenta: número con 2 decimales. Permite nulos.
-e. PrecioAlquiler: número con 2 decimales.
-f. StockVenta: de tipo entero grande por defecto son 10 unidades y no
-soporta valores nulos.
-g. StockAlquiler: de tipo entero muy pequeño rellenando con ceros a la
-izquierda.
-h. Crea un índice sobre el campo PrecioVenta.
-4. Crea la tabla juegosNuevos en BD3 con la misma estructura que la tabla
-juegos de BD2.
-5. Renombra la tabla juegosNuevos a NovosXogos.
-6. Mueve la tabla NovosXogos de BD3 a BD2.
-7. Borra la base de datos BD3.
+g. Crear una clave foránea entre Juego y la tabla juegos. Establecer la política
+de actualizaciones en cascada para las actualizaciones y Restrict para los
+borrados.
+h. Prueba a crear esta tabla con el motor de almacenamiento MyISAM. ¿Qué
+pasa con las claves foráneas?. Créalo con el gestor de almacenamiento
+InnoDB.
 */
