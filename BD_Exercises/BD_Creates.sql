@@ -42,13 +42,26 @@ CREATE TABLE ALQUILERES (
         ON UPDATE CASCADE
         ON DELETE RESTRICT
     )
+    ENGINE = MyISAM;
+
+CREATE TABLE VENTAS (
+    IDVENTA INT PRIMARY KEY AUTO_INCREMENT,
+    NUMSOCIO INT NOT NULL COMMENT REFERENCIA A LOS SOCIOS DE LA TABLA SOCIOS,
+    JUEGO SMALLINT NOT NULL COMMENT CODIGO DEL JUEGO,
+    FECHAVENTA TIMESTAMP DEFAULT CURRENT_TIMESTAMP NULL,
+    PRECIO FLOAT(10,2),
+    FOREIGN KEY (NUMSOCIO) REFERENCES SOCIOS(NUMEROSOCIO)
+    ON DELETE SET NULL 
+    ON UPDATE NO ACTION
+    ,
+    FOREIGN KEY (JUEGO) REFERENCES JUEGOS(IDJUEGO)
+    ON DELETE NO ACTION 
+    )
     ENGINE = InnoDB;
 
-/*
-g. Crear una clave foránea entre Juego y la tabla juegos. Establecer la política
-de actualizaciones en cascada para las actualizaciones y Restrict para los
-borrados.
-h. Prueba a crear esta tabla con el motor de almacenamiento MyISAM. ¿Qué
-pasa con las claves foráneas?. Créalo con el gestor de almacenamiento
-InnoDB.
-*/
+SHOW INDEX(SOCIOS);
+
+DESCRIBE SOCIOS 
+SHOW FULL COLUMNS FROM SOCIOS;
+
+SHOW CREATE TABLE SOCIOS;
