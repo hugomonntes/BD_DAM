@@ -108,22 +108,3 @@ ALTER TABLE VENTAS ADD FOREIGN KEY (JUEGO) REFERENCES JUEGOS(IDJUEGO)
     ON DELETE NO ACTION
 -- 37
 ALTER TABLE VENTAS MODIFY ENGINE=MyISAM;
-
-
-/*
-27. Modifica el campo numeroSocio en socios y defínelo como entero. ¿Qué
-sucede?¿Cómo lo solucionarías?
-28. Borra la clave primaria de la tabla alquileres. ¿Qué sucede? ¿Cómo lo
-solucionarías?
-29. Inserta de nuevo la clave primaria sobre el mismo campo.
-30. Inserta un índice sobre el campo DNI de la tabla socios.
-31. Crea un índice sobre el nombre de un socio llamado indiceSocio. Comprueba
-que el índice tiene el nombre correcto.
-32. Borra el índice anterior.
-33. Crea un índice único entre el nombre y apellidos de la tabla socios llamado
-nombre completo.
-34. Borra el índice anterior.
-35. Borra las claves foráneas de la tabla ventas.
-36. Vuelve a crear las claves foráneas.
-37. Cambia el motor de almacenamiento de la tabla ventas a MyISAM
-*/
