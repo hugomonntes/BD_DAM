@@ -25,11 +25,11 @@
 49. Determinar cuántos empleados tienen comisiones nulas.
     SELECT COUNT(*) FROM `empleados` WHERE COMISION IS NULL;
 50. Mostrar el apellido y el día de la semana en que cada empleado fue contratado.
-    SELECT APELLIDO, DAYNAME(FECHA_ALT) FROM `empleados`;
+    SELECT APELLIDO, DAYNAME(FECHA_ALT) FROM `empleados`; -- DUDAS
 51. Comparar alfabéticamente dos apellidos seleccionados.
     SELECT APELLIDO FROM `empleados` WHERE APELLIDO < 'Smith' AND APELLIDO > 'Johnson';
 52. Mostrar los salarios redondeados hacia abajo a la centena más cercana.
-    SELECT APELLIDO, FLOOR(SALARIO, 2) FROM `empleados`;
+    SELECT APELLIDO, FLOOR(SALARIO, 2) FROM `empleados`; -- DUDAS
 53. Determinar los apellidos que tienen una 'a' en la segunda posición.
     SELECT APELLIDO FROM `empleados` WHERE APELLIDO LIKE '_a%';
 54. Mostrar los apellidos de los empleados cuyo salario sea el más bajo truncado a dos
