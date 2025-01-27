@@ -3,12 +3,14 @@ INSERT TABLE JUEGOS (NOMBRE, PLATAFORMA, PRECIOVENTA, PRECIOALQUILER, STOCKVENTA
     'Maniac Mansion', "Nintendo,DS,PC", 40.30, 5, 10, 5,
     'Indiana Jones and the Last Crusade', "PlayStation, Xbox, PC", 50, NULL, 53, NULL,
     'Loom', "Wii, PC", NULL, 5, 13, 6,
-    'Monkey Island II: The LeChucks Revenge', "Wii,PSP,PC", 20, NULL , 4 , 2,
-    
+    'Monkey Island II: The LeChucks Revenge', "Wii,PSP,PC", 20, NULL , 4 , 2,         
+    'Day of the Tentacle', "XBOX PC", 50, 50, 4, 1,
+    'Sam & Max Hit the Road', "PSP, Wii, PC", 37.30, 5.2, 2, 4,
+    'Full Throttle', "PSP Wii Playstation XBOX PC Nintendo DS", 42.00, 3.50, 4, NULL,
+    'The Dig PC', "PC", 50.2, 4, 5, NULL,
+    'La abadía del crimen PC', "PC", 25, 5, 4, 3
 );
 
--- 5 Day of the Tentacle XBOX PC 50.50 4 1
--- 6 Sam & Max Hit the Road PSP Wii PC Playstation 37.30 5.2 2 4
 -- 7 Full Throttle PSP Wii Playstation
 -- XBOX PC Nintendo DS 42.00 3.50 4
 -- 8 The Dig PC 50.2 4 5
