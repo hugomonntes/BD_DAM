@@ -45,3 +45,23 @@ INSERT INTO ALQUILERES (NUMSOCIO, JUEGOS, FECHA_ALQUILER, FECHA_DEVOLUCION) VALU
     ('9', '22', DEFAULT, DATE_ADD(FECHA_ALQUILER, INTERVAL 3 DAY)),
     ('4', '8', DEFAULT, DATE_ADD(FECHA_ALQUILER, INTERVAL 12 HOUR))
 )
+
+--16
+INSERT INTO VENTAS (NUMSOCIO, JUEGO, FECHAVENTA) VALUES
+    ('1', '2', DEFAULT),
+    ('4', '5', DEFAULT),
+    ('2', '7', DEFAULT),
+    ('4', '1', DATE_ADD(NOW(), INTERVAL 1 WEEK)),
+    ('5', '2', DEFAULT),
+    ('2', '7', DEFAULT
+);
+
+-- 6. Inserta los siguientes valores en la tabla ventas y comprueba el resultado de
+-- la inserción.
+-- Id Venta NumSocio Juego FechaVenta
+-- 1 1 2 Valor por Defecto
+-- 2 4 5 Valor por Defecto
+-- 3 2 7 En una semana
+-- 4 4 1 Valor por Defecto
+-- 5 5 2 Valor por Defecto
+-- 6 2 7 Valor por Defecto
