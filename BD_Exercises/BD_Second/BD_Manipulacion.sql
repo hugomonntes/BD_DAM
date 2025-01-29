@@ -13,19 +13,61 @@
     UPDATE EMPLEADOS SET SALARIO * 0.95;
 -- 5. Se le aplicara una bonificación de 50€ en el salario a todos aquellos que
 -- ganen 1500 o menos.
+    UPDATE EMPLEADOS SET SALARIO = SALARIO + 50 WHERE SALARIO <= 1500;
 -- 6. Añadir un nuevo departamento: 'Calidad', situado en Noia y con
 -- número 50.
+    INSERT INTO DEPART SET IDDEPART = 50, NOMBRE = 'CALIDAD', LOC = 'NOIA';
 -- 7. Añadir Iglesias como un nuevo presidente en la oficina de calidad con un
 -- salario de 6000 y sin comisión. La fecha de alta es la de hoy. Dejar que
 -- MySQL especifique de forma automática el código de empleado.
--- 8. Reasignar a los empleados del departamento 20 al departamento de
--- calidad.
+    INSERT INTO EMPLEADOS SET APELLIDO = 'Iglesias', OFICIO = 'Presidente', JEFE = NULL ,SALARIO = 6000 , COMISION = NULL, FECHA_ALT = NOW(), IDDEPART = '50';
+-- 8. Reasignar a los empleados del departamento 20 al departamento de calidad.
+    UPDATE EMPLEADOS SET IDDEPART = '50' WHERE IDDEPART = '20';
 -- 9. La empresa ha cambiado de idea y quiere reasignar a todos los
 -- empleados del departamento 50 al departamento 20, a excepción del
 -- presidente.
+    UPDATE EMPLEADOS SET IDDEPART = '50' WHERE IDDEPART = '20' AND OFICIO != 'PRESIDENTE';
 -- 10. El presidente insertado en el punto 7 abandona la empresa. Elimínalo.
--- 11. Se eliminan los empleados del departamento 20 que cobren más de
--- 2000 euros.
--- 12. Estamos en un ERE y la empresa despide a todos los trabajadores.
--- Elimínalos mediante dos instrucciones distintas. Explica cual es mejor y
--- porque.
+    DELETE FROM EMPLEADOS WHERE CODEMP = '15';
+-- 11. Se eliminan los empleados del departamento 20 que cobren más de 2000 euros.
+    DELETE FROM EMPLEADOS WHERE IDDEPART = '20' AND SALARIO > 2000;
+-- 12. Estamos en un ERE y la empresa despide a todos los trabajadores. Elimínalos mediante dos instrucciones distintas. Explica cual es mejor y porque.
+    DELETE FROM EMPLEADOS;
+    TRUNCATE TABLE EMPLEADOS; --ES MEJOR LA OPCION DEL TRUNCATE YA QUE ELIMINA TODOS DEL GOLPE Y NO VA FILA A FILA
+-- 13. La empresa ha conseguido una oferta para realizar un nuevo proyecto.
+-- Se vuelven a contratar a todos los trabajadores. Vamos a insertar de
+-- nuevo la tabla empleados y la clonamos en la tabla empleados2 (No hay
+-- que indicar ningún resultado).
+-- 14. Actualizamos el código de empleado en empleados2 en 1000 unidades.
+-- 15. Inserta en empleados2 todos los empleados de la tabla empleados con
+-- un código de empleado mayor que 8;
+-- 16. Inserta los departamentos publicidad y costes en una única sentencia.
+-- Los valores de departamento son 60 y 70, los de ciudad son Ourense y
+-- Lugo respectivamente.
+-- 17. La dirección de la empresa nos indica que el departamento de costes ha
+-- cambiado su nombre a "estudios de mercado" y su localización a
+-- Pontevedra. Actualiza su valor sin usar update. ¿Se ha perdido
+-- información de algún tipo?. En caso afirmativo indicar el por qué.
+-- 18. Elimina todos los empleados de empleados2 con un salario menor que
+-- 3000 y mayor que 2000.
+-- 19. Asignar a todos los empleados de empleados2 un nuevo jefe con
+-- código 5.
+-- 20. Despedir a los empleados de empleados2 que tienen comisión.
+-- 21. Hacer constar en la base de datos que el nuevo presidente de la
+-- empresa es Susan Calvin y que trabaja en un departamento nuevo con
+-- nombre robótica situado en Ferrol. Los demás presidentes dejan la
+-- empresa.
+-- 22. Pon en una única sentencia el nombre y la localización en minúscula del
+-- departamento numero 40.
+-- 23. Actualizar el nombre y la localización a minúsculas de las 2 primeras
+-- entradas de la tabla depart.
+-- 24. Aumenta en 100€ la comisión del empleado que lleve más tiempo en la
+-- empresa.
+-- 25. Como premio aumentamos la comisión en 40€ a los dos empleados
+-- mas nuevos.
+-- 26. Los dos empleados más veteranos de la tabla empleados2 se jubilan.
+-- Elimínalos.
+-- 27. Cambia todos los valores NULL en comisión por 0.
+-- 28. Cambia el oficio de empleados a oficinista.
+-- 29. Se ha producido un cambio de jefe para los empleados que trabajen en
+-- Sevilla y en Madrid. El nuevo jefe tiene como código 8.
