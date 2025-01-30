@@ -59,17 +59,21 @@
     UPDATE EMPLEADOS2 SET CODEMP = CODEMP + 1000;
 -- 15. Inserta en empleados2 todos los empleados de la tabla empleados con
 -- un código de empleado mayor que 8;
+    INSERT INTO EMPLEADOS2 SELECT * FROM EMPLEADOS WHERE CODEMP > 8;
 -- 16. Inserta los departamentos publicidad y costes en una única sentencia.
 -- Los valores de departamento son 60 y 70, los de ciudad son Ourense y
 -- Lugo respectivamente.
+    INSERT INTO EMPLEADOS2 (NOMBRE, IDDEPART, LOC) VALUES
+    ('PUBLICIDAD', 60, 'OURENSE'),
+    ('COSTES', 70, 'LUGO');
 -- 17. La dirección de la empresa nos indica que el departamento de costes ha
 -- cambiado su nombre a "estudios de mercado" y su localización a
 -- Pontevedra. Actualiza su valor sin usar update. ¿Se ha perdido
 -- información de algún tipo?. En caso afirmativo indicar el por qué.
--- 18. Elimina todos los empleados de empleados2 con un salario menor que
--- 3000 y mayor que 2000.
--- 19. Asignar a todos los empleados de empleados2 un nuevo jefe con
--- código 5.
+    REPLACE INTO DEPART (IDDEPART, NOMBRE, LOC) VALUES (70,'ESTUDIOS DE MERCADO', 'PONTEVEDRA');
+-- 18. Elimina todos los empleados de empleados2 con un salario menor que 3000 y mayor que 2000.
+    DELETE FROM EMPLEADOS2 WHERE SALARIO < 3000 OR SALARIO > 2000;
+-- 19. Asignar a todos los empleados de empleados2 un nuevo jefe con código 5.
 -- 20. Despedir a los empleados de empleados2 que tienen comisión.
 -- 21. Hacer constar en la base de datos que el nuevo presidente de la
 -- empresa es Susan Calvin y que trabaja en un departamento nuevo con
