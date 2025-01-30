@@ -38,7 +38,25 @@
 -- Se vuelven a contratar a todos los trabajadores. Vamos a insertar de
 -- nuevo la tabla empleados y la clonamos en la tabla empleados2 (No hay
 -- que indicar ningún resultado).
+    INSERT INTO `empleados` (`CODEMP`, `APELLIDO`, `OFICIO`, `JEFE`, `FECHA_ALT`, `SALARIO`, `COMISION`, `IDDEPART`) VALUES
+        (2, 'Sanchez', 'Empleado', 5, '2012-12-08', 1040, NULL, 30),
+        (3, 'Arroyo', 'Vendedor', 5, '2012-03-08', 1500, 390, 30),
+        (4, 'Sala', 'Vendedor', 8, '2012-03-08', 1625, 650, 30),
+        (5, 'Jimenez', 'Director', 1, '2011-04-02', 2900, NULL, 20),
+        (6, 'Martin', 'Vendedor', 7, '2012-03-08', 1600, 1020, 30),
+        (7, 'Negro', 'Director', 1, '2011-05-01', 3005, NULL, 30),
+        (8, 'Cerezo', 'Director', 1, '2011-06-09', 13000, NULL, 10),
+        (9, 'Gil', 'Analista', 5, '2011-11-09', 3000, NULL, 20),
+        (1, 'Rey', 'Presidente', NULL, '2011-11-17', 4100, NULL, 10),
+        (10, 'Tovar', 'Vendedor', 7, '2012-03-08', 1350, 0, 30),
+        (11, 'Alonso', 'Empleado', 7, '2012-03-08', 1430, NULL, 30),
+        (12, 'Jimeno', 'Empleado', 8, '2012-03-08', 1335, NULL, 30),
+        (13, 'Fernandez', 'Analista', 5, '2011-12-03', 3000, NULL, 20),
+        (14, 'Muñoz', 'Empleado', 7, '2012-01-23', 3000, NULL, 10);
+
+        CREATE TABLE EMPLEADOS2 LIKE EMPLEADOS;
 -- 14. Actualizamos el código de empleado en empleados2 en 1000 unidades.
+    UPDATE EMPLEADOS2 SET CODEMP = CODEMP + 1000;
 -- 15. Inserta en empleados2 todos los empleados de la tabla empleados con
 -- un código de empleado mayor que 8;
 -- 16. Inserta los departamentos publicidad y costes en una única sentencia.
