@@ -74,21 +74,35 @@
 -- 18. Elimina todos los empleados de empleados2 con un salario menor que 3000 y mayor que 2000.
     DELETE FROM EMPLEADOS2 WHERE SALARIO < 3000 OR SALARIO > 2000;
 -- 19. Asignar a todos los empleados de empleados2 un nuevo jefe con código 5.
+    UPDATE EMPLEADOS2 SET JEFE = 5;
 -- 20. Despedir a los empleados de empleados2 que tienen comisión.
+    DELETE FROM EMPLEADOS2 WHERE COMISION > 0;
 -- 21. Hacer constar en la base de datos que el nuevo presidente de la
 -- empresa es Susan Calvin y que trabaja en un departamento nuevo con
 -- nombre robótica situado en Ferrol. Los demás presidentes dejan la
 -- empresa.
+    DELETE FROM EMPLEADOS2 WHERE OFICIO = 'Presidente';
+    INSERT INTO DEPART (IDDEPART, NOMBRE, LOC) VALUES (
+        80, 'ROBOTICA', 'FERROL'
+    )
+    INSERT INTO EMPLEADOS2(APELLIDO, OFICIO, JEFE) VALUES (
+        'Calvin', 'Presidente', 5
+    )
 -- 22. Pon en una única sentencia el nombre y la localización en minúscula del
 -- departamento numero 40.
+    UPDATE depart SET NOMBRE = LOWER(NOMBRE), LOC = LOWER(LOC) WHERE IDDEPART = 40;
 -- 23. Actualizar el nombre y la localización a minúsculas de las 2 primeras
 -- entradas de la tabla depart.
+    UPDATE depart SET NOMBRE = LOWER(NOMBRE), LOC = LOWER(LOC) LIMIT 2;
 -- 24. Aumenta en 100€ la comisión del empleado que lleve más tiempo en la
 -- empresa.
+    UPDATE EMPLEADOS2 SET COMISION = COMISION + 100 WHERE FECHA_ALT ORDER BY DESC LIMIT 1;
 -- 25. Como premio aumentamos la comisión en 40€ a los dos empleados
 -- mas nuevos.
+    UPDATE EMPLEADOS2 SET COMISION = COMISION + 40 WHERE FECHA_ALT ORDER BY DESC LIMIT (1, 3);
 -- 26. Los dos empleados más veteranos de la tabla empleados2 se jubilan.
 -- Elimínalos.
+    DELETE FROM EMPLEADOS2 WHERE FECHA_ALT ORDER BY DESC LIMIT 2;
 -- 27. Cambia todos los valores NULL en comisión por 0.
 -- 28. Cambia el oficio de empleados a oficinista.
 -- 29. Se ha producido un cambio de jefe para los empleados que trabajen en
