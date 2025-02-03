@@ -96,14 +96,14 @@
     UPDATE depart SET NOMBRE = LOWER(NOMBRE), LOC = LOWER(LOC) LIMIT 2;
 -- 24. Aumenta en 100€ la comisión del empleado que lleve más tiempo en la
 -- empresa.
-    UPDATE EMPLEADOS2 SET COMISION = COMISION + 100 WHERE FECHA_ALT ORDER BY DESC LIMIT 1;
+    UPDATE EMPLEADOS2 SET COMISION = COMISION + 100 WHERE FECHA_ALT ORDER BY ASC LIMIT 1;
 -- 25. Como premio aumentamos la comisión en 40€ a los dos empleados
 -- mas nuevos.
-    UPDATE EMPLEADOS2 SET COMISION = COMISION + 40 WHERE FECHA_ALT ORDER BY DESC LIMIT (1, 3);
+    UPDATE EMPLEADOS2 SET COMISION = COMISION + 40 WHERE FECHA_ALT ORDER BY ASC LIMIT (1, 3);
 -- 26. Los dos empleados más veteranos de la tabla empleados2 se jubilan.
 -- Elimínalos.
-    DELETE FROM EMPLEADOS2 WHERE FECHA_ALT ORDER BY DESC LIMIT 2;
+    DELETE FROM EMPLEADOS2 WHERE FECHA_ALT ORDER BY ASC LIMIT 2;
 -- 27. Cambia todos los valores NULL en comisión por 0.
--- 28. Cambia el oficio de empleados a oficinista.
--- 29. Se ha producido un cambio de jefe para los empleados que trabajen en
--- Sevilla y en Madrid. El nuevo jefe tiene como código 8.
+    UPDATE EMPLEADOS2 SET COMISION = 0 WHERE COMISION = NULL;
+-- 29. Se ha producido un cambio de jefe para los empleados que trabajen en Sevilla y en Madrid. El nuevo jefe tiene como código 8.
+    
