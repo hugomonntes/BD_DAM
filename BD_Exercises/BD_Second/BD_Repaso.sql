@@ -15,11 +15,11 @@
 44. Listar los apellidos de los empleados que no tienen jefe asignado.
     SELECT APELLIDO FROM `empleados` WHERE JEFE IS NULL;
 45. Determinar los empleados con las comisiones más altas redondeadas al centenar.
-    SELECT APELLIDO, ROUND(COMISION, 2) FROM `empleados` ORDER BY comision DESC LIMIT 1;
+    SELECT APELLIDO, ROUND(COMISION, 2) FROM `empleados` ORDER BY comision DESC LIMIT 1; //MAL
 46. Extraer los últimos cuatro caracteres de los apellidos de los empleados.
     SELECT SUBSTRING(APELLIDO, -4) FROM `empleados`;
 47. Obtener el promedio de los salarios truncado a un decimal.
-    SELECT ROUND(AVG(SALARIO), 2) FROM `empleados`;
+    SELECT ROUND(AVG(SALARIO), 2) FROM `empleados`; //MAL
 48. Obtener los primeros tres caracteres del apellido de los empleados.
     SELECT SUBSTRING(APELLIDO, 1, 3) FROM `empleados`;
 49. Determinar cuántos empleados tienen comisiones nulas.
@@ -29,7 +29,7 @@
 51. Comparar alfabéticamente dos apellidos seleccionados.
     SELECT APELLIDO FROM `empleados` WHERE APELLIDO < 'Smith' AND APELLIDO > 'Johnson';
 52. Mostrar los salarios redondeados hacia abajo a la centena más cercana.
-    SELECT APELLIDO, FLOOR(SALARIO, 2) FROM `empleados`;
+    SELECT APELLIDO, FLOOR(SALARIO, 2) FROM `empleados`; //MAL
 53. Determinar los apellidos que tienen una 'a' en la segunda posición.
     SELECT APELLIDO FROM `empleados` WHERE APELLIDO LIKE '_a%';
 54. Mostrar los apellidos de los empleados cuyo salario sea el más bajo truncado a dos
