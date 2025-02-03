@@ -106,4 +106,4 @@
 -- 27. Cambia todos los valores NULL en comisión por 0.
     UPDATE EMPLEADOS2 SET COMISION = 0 WHERE COMISION = NULL;
 -- 29. Se ha producido un cambio de jefe para los empleados que trabajen en Sevilla y en Madrid. El nuevo jefe tiene como código 8.
-    UPDATE EMPLEADOS2; 
+    UPDATE EMPLEADOS2;
