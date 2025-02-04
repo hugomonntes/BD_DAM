@@ -106,4 +106,32 @@
 -- 27. Cambia todos los valores NULL en comisión por 0.
     UPDATE EMPLEADOS2 SET COMISION = 0 WHERE COMISION = NULL;
 -- 29. Se ha producido un cambio de jefe para los empleados que trabajen en Sevilla y en Madrid. El nuevo jefe tiene como código 8.
-    UPDATE EMPLEADOS2;
+    UPDATE EMPLEADOS2 SET JEFE = 8 WHERE IDDEPART = 20 OR IDDEPART = 10;
+-- 30. Cambia el salario de los trabajadores del departamento de ventas que
+-- cobren menos 2000, a 2000.
+    UPDATE EMPLEADOS2 SET SALARIO = 2000 WHERE SALARIO < 2000 AND IDDEPART = 30;
+-- 31. Actualiza la fecha de alta a la fecha actual y el número de departamento
+-- al departamento Ventas de los empleados cuyo salario sea menor
+-- que 2000.
+    UPDATE EMPLEADOS2 SET FECHA_ALT = NOW() AND IDDEPART = 70 WHERE SALARIO < 2000;
+-- 32. Poner en minúsculas el oficio de todos los empleados de la tabla
+-- empleados que tengan un salario menor que la media de salario de los
+-- empleados de empleados2.
+    SET @media := AVG(SUM(SALARIO));
+    UPDATE EMPLEADOS2 SET OFICIO = LOWER(OFICIO) WHERE SALARIO < @media;
+-- 33. Añade la columna tipo al final de la tabla empleados 2, con los posibles
+-- valores ‘A’,’B’ y ‘C’.
+-- 34. Actualiza el tipo de los empleados de la tabla empleados2 a
+-- los valores ‘A’ y ‘C’.
+-- 35. Hallar los departamentos que no tengan empleados asignados.
+-- 36. Poner en minúsculas los dos últimos caracteres de los apellidos de los
+-- empleados.
+-- 37. Despide a todos los empleados que tengan un director cuyo código
+-- termine en 9.
+-- 38. Los empleados con el departamento más alto se quedan sin
+-- departamento.
+-- 39. Para que los empleados disfruten de las vacaciones de semana santa se
+-- ha aumentado su comisión en 50 euros para los empleados, 60 para los
+-- vendedores, 130 para el presidente y 70 para el resto. Realiza este
+-- aumento en una sola consulta teniendo en cuenta los posibles valores
+-- nulos.
