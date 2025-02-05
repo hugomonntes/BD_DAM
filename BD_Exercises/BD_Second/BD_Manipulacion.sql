@@ -117,22 +117,31 @@
 -- 32. Poner en minúsculas el oficio de todos los empleados de la tabla
 -- empleados que tengan un salario menor que la media de salario de los
 -- empleados de empleados2.
-    UPDATE EMPLEADOS2 SET OFICIO = LOWER(OFICIO) WHERE SALARIO < (SELECT AVG(SALARIO) FROM empleados);
+    SET @media := AVG(SUM(SALARIO));
+    UPDATE EMPLEADOS2 SET OFICIO = LOWER(OFICIO) WHERE SALARIO < @media;
 -- 33. Añade la columna tipo al final de la tabla empleados 2, con los posibles
 -- valores ‘A’,’B’ y ‘C’.
-    ALTER TABLE EMPLEADOS2 ADD TIPO;
-    INSERT INTO EMPLEADOS2 SET TIPO = 'A', TIPO = 'B', TIPO = 'C';
 -- 34. Actualiza el tipo de los empleados de la tabla empleados2 a
 -- los valores ‘A’ y ‘C’.
+    UPDATE EMPLEADOS2 SET APELLIDO = LOWER(LEFT(APELLIDO, CHAR_LENGTH(APELLIDO) - 2));
 -- 35. Hallar los departamentos que no tengan empleados asignados.
+    SELECT IDDEPART FROM DEPART WHERE SUM(APELLIDO) = 0;
 -- 36. Poner en minúsculas los dos últimos caracteres de los apellidos de los
 -- empleados.
+    UPDATE EMPLEADOS2 SET APELLIDO = LOWER(LEFT(APELLIDO, LENGTH(APELLIDO) - 2));
 -- 37. Despide a todos los empleados que tengan un director cuyo código
 -- termine en 9.
+    DELETE FROM EMPLEADOS2 WHERE WHERE OFICIO = 'DIRECTOR' AND CODEMP = '%9'
 -- 38. Los empleados con el departamento más alto se quedan sin
 -- departamento.
+    
 -- 39. Para que los empleados disfruten de las vacaciones de semana santa se
 -- ha aumentado su comisión en 50 euros para los empleados, 60 para los
 -- vendedores, 130 para el presidente y 70 para el resto. Realiza este
 -- aumento en una sola consulta teniendo en cuenta los posibles valores
 -- nulos.
+    UPDATE EMPLEADOS2 SET COMISION = 0 CASE 
+        WHEN CARGO = 'EMPLEADO' THEN 50
+        WHEN CARGO = 'VENDEDOR' THEN 60
+        WHEN CARGO = 'PRESIDENTE' THEN 130
+        ELSE 70 END;
