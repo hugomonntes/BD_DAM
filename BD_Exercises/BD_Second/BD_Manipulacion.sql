@@ -117,10 +117,11 @@
 -- 32. Poner en minúsculas el oficio de todos los empleados de la tabla
 -- empleados que tengan un salario menor que la media de salario de los
 -- empleados de empleados2.
-    SET @media := AVG(SUM(SALARIO));
-    UPDATE EMPLEADOS2 SET OFICIO = LOWER(OFICIO) WHERE SALARIO < @media;
+    UPDATE EMPLEADOS2 SET OFICIO = LOWER(OFICIO) WHERE SALARIO < (SELECT AVG(SALARIO) FROM empleados);
 -- 33. Añade la columna tipo al final de la tabla empleados 2, con los posibles
 -- valores ‘A’,’B’ y ‘C’.
+    ALTER TABLE EMPLEADOS2 ADD TIPO;
+    INSERT INTO EMPLEADOS2 SET TIPO = 'A', TIPO = 'B', TIPO = 'C';
 -- 34. Actualiza el tipo de los empleados de la tabla empleados2 a
 -- los valores ‘A’ y ‘C’.
 -- 35. Hallar los departamentos que no tengan empleados asignados.
