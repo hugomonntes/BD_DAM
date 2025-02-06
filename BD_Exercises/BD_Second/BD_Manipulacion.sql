@@ -139,8 +139,8 @@
 -- vendedores, 130 para el presidente y 70 para el resto. Realiza este
 -- aumento en una sola consulta teniendo en cuenta los posibles valores
 -- nulos.
-    UPDATE EMPLEADOS2 SET COMISION = 0 CASE 
-        WHEN CARGO = 'EMPLEADO' THEN 50
-        WHEN CARGO = 'VENDEDOR' THEN 60
-        WHEN CARGO = 'PRESIDENTE' THEN 130
-        ELSE 70 END;
+    UPDATE EMPLEADOS2 SET COMISION = CASE 
+        WHEN OFICIO = 'EMPLEADO' THEN COMISION += 50
+        WHEN OFICIO = 'VENDEDOR' THEN COMISION += 60
+        WHEN OFICIO = 'PRESIDENTE' THEN COMISION += 130
+        ELSE COMISION += 70 END;
