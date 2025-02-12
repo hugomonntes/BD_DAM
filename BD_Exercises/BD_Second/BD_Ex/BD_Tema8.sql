@@ -15,7 +15,7 @@ SELECT OFICIO, SUM(SALARIO) FROM `empleados` GROUP by OFICIO;
 --8
 SELECT OFICIO, SUM(SALARIO) FROM `empleados` GROUP by OFICIO order by SUM(SALARIO) DESC LIMIT 1;
 --9
-SELECT OFICIO, AVG(SALARIO) as 'media' FROM empleados GROUP by OFICIO HAVING AVG(SALARIO)>2000;
+SELECT OFICIO, AVG(SALARIO) as 'mediaSalario' FROM empleados GROUP by OFICIO HAVING mediaSalario >2000;
 --10
 SELECT IDDEPART, SUM(SALARIO) as 'suma', MAX(SALARIO) as 'maximo', MIN(SALARIO) as 'minimo' FROM `empleados` GROUP by IDDEPART;
 --11
@@ -26,3 +26,4 @@ SELECT OFICIO, IDDEPART, COUNT(*) as 'nº empelados', SUM(salario) as 'suma sala
 SELECT IDDEPART, OFICIO, COUNT(*) as 'numero' FROM `empleados`GROUP by IDDEPART, OFICIO HAVING numero>2;
 --14
 SELECT IDDEPART, COUNT(DISTINCT OFICIO) as 'numero' FROM `empleados` GROUP BY IDDEPART;
+--15
