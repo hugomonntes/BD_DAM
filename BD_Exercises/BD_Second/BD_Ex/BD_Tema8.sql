@@ -19,11 +19,11 @@ SELECT OFICIO, AVG(SALARIO) as 'mediaSalario' FROM empleados GROUP by OFICIO HAV
 --10
 SELECT IDDEPART, SUM(SALARIO) as 'suma', MAX(SALARIO) as 'maximo', MIN(SALARIO) as 'minimo' FROM `empleados` GROUP by IDDEPART;
 --11
-SELECT IDDEPART, COUNT(*) FROM `empleados`WHERE OFICIO='empleado' GROUP BY IDDEPART;
+SELECT IDDEPART, COUNT(*) FROM `empleados` WHERE OFICIO = 'empleado' GROUP BY IDDEPART; --Si ya hay group by utilizas having si aun no agrupaste utilizas where antes.
 --12
-SELECT OFICIO, IDDEPART, COUNT(*) as 'nº empelados', SUM(salario) as 'suma salaros' FROM `empleados` GROUP by OFICIO, IDDEPART;
+SELECT OFICIO, IDDEPART, COUNT(*) as 'nº empelados', SUM(salario) as 'suma salarios' FROM `empleados` GROUP by OFICIO, IDDEPART;
 --13
-SELECT IDDEPART, OFICIO, COUNT(*) as 'numero' FROM `empleados`GROUP by IDDEPART, OFICIO HAVING numero>2;
+SELECT IDDEPART, OFICIO, COUNT(*) as 'numero' FROM `empleados`GROUP by OFICIO, IDDEPART HAVING numero>2;
 --14
 SELECT IDDEPART, COUNT(DISTINCT OFICIO) as 'numero' FROM `empleados` GROUP BY IDDEPART;
 --15
