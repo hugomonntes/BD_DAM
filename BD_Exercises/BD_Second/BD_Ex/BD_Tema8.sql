@@ -37,8 +37,12 @@ SELECT APELLIDO, SALARIO FROM empleados WHERE (OFICIO, SALARIO) = (SELECT OFICIO
 --19
 SELECT APELLIDO, OFICIO, SALARIO, FECHA_ALT FROM empleados WHERE OFICIO = (SELECT OFICIO FROM empleados WHERE APELLIDO = 'Jimenez') || SALARIO >= (SELECT SALARIO FROM empleados WHERE APELLIDO = 'Fernandez')
 --20
--- 20. A partir de la tabla EMPLEADOS, visualizar el número de empleados de cada
--- departamento cuyo oficio sea EMPLEADO.
-SELECT COUNT(*) FROM empleados WHERE IDDEPART = (SELECT IDDEPART FROM depart WHERE OFICIO = "Empleado");
+SELECT COUNT(*) FROM empleados WHERE IDDEPART = (SELECT IDDEPART FROM depart WHERE OFICIO = "Empleado"); -- REVISAR
 --21
 SELECT * FROM empleados WHERE SALARIO > (SELECT AVG(SALARIO) FROM empleados);
+--22
+SELECT APELLIDO, OFICIO, SALARIO FROM empleados WHERE (SALARIO, IDDEPART) = (SELECT SALARIO, IDDEPART FROM empleados WHERE APELLIDO = "Fernández") AND APELLIDO != "Fernández";
+--23
+-- Visualizar el salario medio y los departamentos en los que el salario medio del
+-- departamento es mayor o igual que la media de todos los salarios.
+SELECT AVG(SALARIO), IDDEPART FROM empleados WHERE AVG(SALARIO) >= (SELECT AVG(SALARIO) FROM empleados) GROUP BY IDDEPART;
