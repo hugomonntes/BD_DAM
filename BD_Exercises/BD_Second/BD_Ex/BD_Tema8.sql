@@ -45,4 +45,4 @@ SELECT APELLIDO, OFICIO, SALARIO FROM empleados WHERE (SALARIO, IDDEPART) = (SEL
 --23
 -- Visualizar el salario medio y los departamentos en los que el salario medio del
 -- departamento es mayor o igual que la media de todos los salarios.
-SELECT AVG(SALARIO), IDDEPART FROM empleados WHERE AVG(SALARIO) >= (SELECT AVG(SALARIO) FROM empleados) GROUP BY IDDEPART;
+SELECT AVG(SALARIO), IDDEPART FROM empleados GROUP BY IDDEPART HAVING AVG(SALARIO) >= (SELECT AVG(SALARIO) FROM empleados);
