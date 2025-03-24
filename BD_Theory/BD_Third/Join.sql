@@ -6,3 +6,6 @@ SELECT * FROM empleados, depart where empleados.iddepart = depart.IDDEPART and d
 -- JOIN (COMBINACIÓN DE TABLAS)
 SELECT empleados.apellido, depart.nombre FROM empleados JOIN depart ON empleados.iddepart = depart.iddepart WHERE nombre != "Ventas";
 SELECT empleados.apellido, depart.nombre FROM empleados JOIN depart USING(iddepart);
+
+-- NATURAL JOIN
+SELECT empleados.apellido, depart.nombre FROM empleados NATURAL JOIN depart; --Ya iguala automaticacmente por la clave IGUAL
