@@ -10,6 +10,6 @@ SELECT empleados.apellido, depart.nombre FROM empleados JOIN depart USING(iddepa
 -- NATURAL JOIN
 SELECT empleados.apellido, depart.nombre FROM empleados NATURAL JOIN depart; --Ya iguala automaticacmente por la clave IGUAL
 
--- OUTER JOIN
+-- OUTER JOIN (ESCOGER TODOS LOS VALORES DE LA TABLA DE LA DERECHA O IZQUIERDA)
 SELECT * FROM alumnos LEFT JOIN telf; -- CON LEFT LA TABLA DE LA IZQUIERDA PONE TODOS LOS VALORES
 SELECT * FROM alumnos NATURAL RIGHT JOIN telf; -- CON RIGHT LA TALBA DE LA DERECHA PONDRÍA TODOS SUS VALORES
