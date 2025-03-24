@@ -4,3 +4,5 @@ SELECT empleados.apellido, depart.nombre FROM empleados, depart WHERE empleados.
 SELECT * FROM empleados, depart where empleados.iddepart = depart.IDDEPART and depart.LOC LIKE 'Madrid';
 
 -- JOIN (COMBINACIÓN DE TABLAS)
+SELECT * FROM tabla1 JOIN tabla2 ON tabla1.id = tabla2.id WHERE nombre != "Ventas";
+SELECT * FROM tabla1 JOIN tabla2 USING(id);
