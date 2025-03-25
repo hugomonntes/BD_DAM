@@ -1,4 +1,4 @@
--- 52
+ -- 52
 SELECT
   empleados.apellido,
   depart.nombre
@@ -61,7 +61,96 @@ SELECT
 FROM
   asignaturas
   JOIN alumnos
-  JOIN notas on asignaturas.COD = notas.asignatura
-  and alumnos.codigo = notas.alumno
+  JOIN notas ON asignaturas.COD = notas.asignatura
+  AND alumnos.codigo = notas.alumno
 WHERE
   alumnos.nombre like 'Ray';
+
+-- 58 Mostrar el apellido, salario y nombre del departamento de los empleados que tengan
+-- el mismo oficio que GIL y que no tengan comisión
+SELECT
+  empleados.apellido,
+  empleados.salario,
+  depart.nombre
+FROM
+  empleados
+  JOIN depart ON depart.iddepart = empleados.iddepart
+WHERE
+  OFICIO = (
+    SELECT
+      empleados.OFICIO
+    FROM
+      empleados
+    WHERE
+      empleados.APELLIDO = "Gil"
+      AND empleados.comision IS NULL
+  );
+
+-- 59. Calcula la media de los salario de los empleados del departamento de
+-- 'CONTABILIDAD'.
+SELECT
+  AVG(empleados.SALARIO)
+FROM
+  empleados
+  JOIN depart USING (iddepart)
+WHERE
+  depart.nombre = (
+    SELECT
+      depart.nombre
+    FROM
+      depart
+    WHERE
+      depart.nombre = "Contabilidad"
+  );
+
+-- 60. Los empleados que ganan más que cualquier empleado del departamento de ventas.
+SELECT
+  empleados.apellido
+FROM
+  empleados
+  JOIN depart USING (iddepart)
+WHERE
+  empleados.salario > ALL (
+    SELECT
+      empleados.salario
+    FROM
+      empleados
+      JOIN depart USING (iddepart)
+    WHERE
+      depart.nombre = "Ventas"
+  );
+
+-- 61. Listar los datos de los departamentos que tengan empleados así como el número de
+-- trabajadores que trabajan en ellos. 
+SELECT
+  nombre,
+  COUNT(empleados.codemp)
+FROM
+  depart
+  JOIN empleados USING (iddepart)
+GROUP BY
+  depart.iddepart;
+
+-- 62. Seleccionar el salario máximo, el mínimo y el salario medio del departamento
+-- ventas.
+SELECT
+  MAX(empleados.salario),
+  MIN(empleados.salario),
+  AVG(empleados.salario)
+FROM
+  empleados
+  JOIN depart USING (iddepart)
+WHERE
+  depart.nombre = "Ventas";
+
+-- 63. Seleccionar nombre, código, salario máximo, salario mínimo y el salario medio de
+-- cada departamento.
+SELECT
+  depart.iddepart,
+  depart.nombre,
+  MAX(empleados.salario),
+  MIN(empleados.salario),
+  AVG(empleados.salario)
+FROM
+  depart
+  JOIN empleados USING (iddepart);
