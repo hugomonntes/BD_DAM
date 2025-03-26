@@ -74,9 +74,9 @@ SELECT
   depart.nombre
 FROM
   empleados
-  JOIN depart ON depart.iddepart = empleados.iddepart
+  JOIN depart USING (iddepart)
 WHERE
-  OFICIO = (
+  empleados.OFICIO = (
     SELECT
       empleados.OFICIO
     FROM
@@ -153,4 +153,53 @@ SELECT
   AVG(empleados.salario)
 FROM
   depart
-  JOIN empleados USING (iddepart);
+  JOIN empleados USING (iddepart)
+GROUP BY
+  depart.iddepart,
+  depart.nombre;
+
+-- 64. Seleccionar nombre, código, oficio, salario máximo, salario mínimo y el salario
+-- medio de cada departamento por oficios. Compara el resultado con la consulta
+-- anterior. ¿Qué habría que añadir si queremos listar solo los que tienen un salario
+-- máximo menor que 2000 euros?.
+SELECT
+  depart.iddepart,
+  depart.nombre,
+  empleados.oficio,
+  MAX(empleados.salario),
+  MIN(empleados.salario),
+  AVG(empleados.salario)
+FROM
+  depart
+  JOIN empleados USING (iddepart)
+GROUP BY
+  empleados.oficio
+ORDER BY
+  nombre;
+
+-- 64B
+SELECT
+  depart.iddepart,
+  depart.nombre,
+  empleados.oficio,
+  MAX(empleados.salario),
+  MIN(empleados.salario),
+  AVG(empleados.salario)
+FROM
+  depart
+  JOIN empleados USING (iddepart)
+GROUP BY
+  empleados.oficio
+HAVING
+  MAX(empleados.salario) > 2000
+ORDER BY
+  nombre;
+
+-- 65. Mostrar los datos del empleado que tiene el salario más alto en el departamento de
+-- 'VENTAS'
+SELECT
+  *
+FROM
+  depart
+  JOIN empleados USING (iddepart)
+WHERE
