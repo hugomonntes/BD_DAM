@@ -31,3 +31,4 @@
 -- CAMBIAR CONTRASEÑA
     * SET PASSWORD = PASSWORD('nuevaContraseña');
     * SET PASSWORD FOR 'nombre@localhost' = PASSWORD('nuevaContraseña');
+    * UPDATE 'nombreTabla' SET PASSWORD = PASSWORD('nuevaContraseña') WHERE HOST = 'localhost' AND USER = 'lugonpa'; 
