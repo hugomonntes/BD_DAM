@@ -253,4 +253,43 @@ FROM
 
 -- 71. Muestra los nombres de los departamentos junto con los usuarios que lo forman
 -- aunque no tengas empleados asociados.
-SELECT depart.NOMBRE FROM depart JOIN empleados GROUP BY depart.NOMBRE;
+SELECT
+  depart.NOMBRE,
+  empleados.APELLIDO
+FROM
+  depart
+  JOIN empleados USING (iddepart)
+GROUP BY
+  depart.NOMBRE,
+  empleados.APELLIDO;
+
+-- 72. Mostrar los nombres de los alumnos, el nombre de la asignatura y su nota siempre
+-- que esta sea mayor que 5.
+SELECT
+  alumnos.nombre,
+  asignaturas.nombre,
+  -- notas.NOTA
+FROM
+  alumnos
+  JOIN asignaturas ON alumnos.codigo = notas.alumno
+WHERE
+  alumnos.cod = (
+    SELECT
+      notas.alumno
+    FROM
+      notas
+    WHERE
+      notas.NOTA > 5
+  );
+
+-- 73. Obtener el nombre del departamento donde trabaja el empleado con el salario más
+-- alto
+SELECT
+  depart.NOMBRE
+FROM
+  depart
+  JOIN empleados USING (iddepart)
+ORDER BY
+  empleados.SALARIO DESC
+LIMIT
+  1;
