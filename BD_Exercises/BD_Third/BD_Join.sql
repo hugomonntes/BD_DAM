@@ -203,3 +203,54 @@ FROM
   depart
   JOIN empleados USING (iddepart)
 WHERE
+  Nombre = "Ventas"
+ORDER BY
+  salario DESC
+LIMIT
+  1;
+
+-- 66. Mostrar el departamento con más empleados
+SELECT
+  depart.NOMBRE,
+  COUNT(*) AS "totalEmpleados"
+FROM
+  depart
+  JOIN empleados USING (iddepart)
+GROUP BY
+  depart.IDDEPART
+ORDER BY
+  totalEmpleados DESC
+LIMIT
+  1;
+
+-- 68. Muestra el apellido de los empleados junto al nombre de su departamento.
+SELECT
+  empleados.APELLIDO,
+  depart.NOMBRE
+FROM
+  depart
+  JOIN empleados USING (iddepart);
+
+-- 69. Muestra el apellido de los empleados junto al nombre de su departamento de los
+-- empleados que trabajen en el departamento 30.
+SELECT
+  empleados.APELLIDO,
+  depart.NOMBRE
+FROM
+  depart
+  JOIN empleados USING (iddepart)
+WHERE
+  depart.IDDEPART = 30;
+
+-- 70. Muestra el apellido de los empleados junto al nombre de su departamento,
+-- incluyendo aquellos que no tienen departamento asignado.
+SELECT
+  empleados.APELLIDO,
+  depart.NOMBRE
+FROM
+  depart
+  JOIN empleados USING (iddepart);
+
+-- 71. Muestra los nombres de los departamentos junto con los usuarios que lo forman
+-- aunque no tengas empleados asociados.
+SELECT depart.NOMBRE FROM depart JOIN empleados GROUP BY depart.NOMBRE;
