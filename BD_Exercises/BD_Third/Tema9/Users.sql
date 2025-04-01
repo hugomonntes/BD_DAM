@@ -31,4 +31,5 @@
 -- CAMBIAR CONTRASEÑA
     * SET PASSWORD = PASSWORD('nuevaContraseña');
     * SET PASSWORD FOR 'nombre@localhost' = PASSWORD('nuevaContraseña');
-    * UPDATE 'nombreTabla' SET PASSWORD = PASSWORD('nuevaContraseña') WHERE HOST = 'localhost' AND USER = 'lugonpa'; 
+    * UPDATE 'nombreTabla' SET PASSWORD = PASSWORD('nuevaContraseña') WHERE HOST = 'localhost' AND USER = 'lugonpa';
+    * FLUSH PRIVILEGES; -- AÑADIRLO DSPS DE LA ANTERIOR CONSLTA DE UPDATE
