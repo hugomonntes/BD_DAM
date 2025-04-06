@@ -222,6 +222,9 @@ ORDER BY
   totalEmpleados DESC
 LIMIT
   1;
+-- 67.
+La consulta primera devuelve todos los empleados incluyendo su apellido y nombre aunque no tengan departamento y el left outer join devuelve todos los empleados y solo los que coindicen de depart.
+La segunda consulta hace lo mismo que LEFT OUTER JOIN pero detecta las columnas iguales entre las tablas y agrupa por ellas.
 
 -- 68. Muestra el apellido de los empleados junto al nombre de su departamento.
 SELECT
