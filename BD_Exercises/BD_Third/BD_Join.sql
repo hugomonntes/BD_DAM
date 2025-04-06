@@ -266,21 +266,15 @@ GROUP BY
 -- 72. Mostrar los nombres de los alumnos, el nombre de la asignatura y su nota siempre
 -- que esta sea mayor que 5.
 SELECT
-  alumnos.nombre,
-  asignaturas.nombre,
-  -- notas.NOTA
+  alumnos.nombre AS nombre_alumno,
+  asignaturas.nombre AS nombre_asignatura,
+  notas.NOTA
 FROM
-  alumnos
-  JOIN asignaturas ON alumnos.codigo = notas.alumno
+  notas
+  JOIN alumnos ON notas.alumno = alumnos.codigo
+  JOIN asignaturas ON notas.asignatura = asignaturas.codigo
 WHERE
-  alumnos.cod = (
-    SELECT
-      notas.alumno
-    FROM
-      notas
-    WHERE
-      notas.NOTA > 5
-  );
+  notas.NOTA > 5;
 
 -- 73. Obtener el nombre del departamento donde trabaja el empleado con el salario más
 -- alto
