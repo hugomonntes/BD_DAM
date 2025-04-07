@@ -37,7 +37,7 @@
 -- PRIVILEGIOS
     * GRANT ALL 
     * GRANT SELECT ON *.* TO user@localhost; -- *.* SE ESCOGE LA DATABASE Y LA TABLA
-    * GRANT ALTER ON *.* TO user@localhost; 
+    * GRANT ALTER ON *.* TO user@localhost;
     * GRANT ALL ON *.* TO user@localhost; 
     * GRANT GRANT OPTION ON *.* TO user@localhost; -- Das los mismo permisos a ese usuario que los que tu tienes y no puede dar privilegios.
     * GRANT ALL, GRANT OPTION ON *.* TO user@localhost; -- Das los mismo permisos a ese usuario que los que tu tienes y puede dar privilegios a otros users.
