@@ -33,3 +33,16 @@
     * SET PASSWORD FOR 'nombre@localhost' = PASSWORD('nuevaContraseña');
     * UPDATE 'nombreTabla' SET PASSWORD = PASSWORD('nuevaContraseña') WHERE HOST = 'localhost' AND USER = 'lugonpa';
     * FLUSH PRIVILEGES; -- AÑADIRLO DSPS DE LA ANTERIOR CONSLTA DE UPDATE
+
+-- PRIVILEGIOS
+    * GRANT ALL 
+    * GRANT SELECT ON *.* TO user@localhost; -- *.* SE ESCOGE LA DATABASE Y LA TABLA
+    * GRANT ALTER ON *.* TO user@localhost; 
+    * GRANT ALL ON *.* TO user@localhost; 
+    * GRANT GRANT OPTION ON *.* TO user@localhost; -- Das los mismo permisos a ese usuario que los que tu tienes y no puede dar privilegios.
+    * GRANT ALL, GRANT OPTION ON *.* TO user@localhost; -- Das los mismo permisos a ese usuario que los que tu tienes y puede dar privilegios a otros users.
+    * GRANT INSERT, DELETE ON *.* TO user@localhost;
+
+-- ELIMINAR PRIVILEGIOS
+    * REVOKE SELECT ON *.* FROM user@localhost;
+    * REVOKE SELECT(pilotos.id) ON f1.pilotos FROM user@localhost;
