@@ -1,1 +1,24 @@
-CREATE VIEW 
+* SE USAN PARA CONSULTAS QUE SE VAN A REPETIR VARIAS VECES
+* CREAS UNA VISTA PARA VER COMO SE ACTUALIZAN LOS CAMBIOS
+* LAS VISTAS NO TIENEN DATOS SOLO MUESTRAN LOS DATOS DE LA TABLAS PEDIDOS EN LA CONSULTA
+
+-- EJEMPLO CREACIÓN
+    CREATE VIEW nombreBD.nombre_vista AS "vista1"
+    SELECT columnas
+    FROM tabla
+    WHERE condición;
+
+-- EJEMPLO MODIFICARCIÓN
+    ALTER VIEW nombreBD.nombre_vista
+    SELECT columnas
+    FROM tabla
+    WHERE condición;
+
+-- EJEMPLO RENOMBRAR
+    ALTER VIEW nombre_actual_de_la_vista RENAME TO nuevo_nombre_de_la_vista;
+
+-- EJEMPLO ELIMINAR
+    DROP VIEW nombre_vista;
+
+-- EJEMPLO ELIMINAR
+    SHOW CREATE VIEW nombre_vista;

@@ -30,12 +30,21 @@ GRANT SELECT, INSERT ON tema5.depart TO user3@"%";
 
 -- 15.Conéctate a la base de datos de tu compañero e inserta una fila en su tabla depart y
 -- es su tabla emple. ¿Qué sucede?
-CREATE USER alumno@"192.130.0.%" IDENTIFIED BY 'tcpip';
+CREATE OR REPLACE USER invitado@"192.130.0.%" IDENTIFIED BY 'tcpip';
+GRANT SELECT ON tema5.depart TO invitado@'%';
+
 -- 18.Renombra los usuarios user2 y user3 a usuario2 y usuario3 con sus correspondientes
 -- hosts. Muestra los usuarios de MySQL y comprueba que los cambios se han realizado
 -- de forma correcta.
+RENAME USER user2@localhost TO usuario2@localhost;
+RENAME USER user3@localhost TO usuario3@localhost;
+
 -- 19. Elimina del usuario3 (antes user3) que se conecta desde el equipo de tu compañero la
 -- posibilidad de consultar la vista vista.
+REVOKE SELECT ON vista FROM usuario3@localhost;
+
 -- 20.Borra este usuario y consulta la tabla de ususarios
+DROP USER usuario3@localhost;
+
 -- 22.Añade a usuario2 desde el equipo local la posibilidad de borrar y crear tablas en la
 -- base de datos tema8.
