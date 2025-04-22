@@ -1,3 +1,4 @@
+-- 2, 4, 7, 8, 9, 10, 11, 15, 18, 19, 20, 22, 23, 24, 27, 28, 30
 -- 2. Crea el usuario user1 con clave pass y que pueda conectarse desde la máquina local
 CREATE USER user1@localhost IDENTIFIED BY 'pass';
 
@@ -48,3 +49,21 @@ DROP USER usuario3@localhost;
 
 -- 22.Añade a usuario2 desde el equipo local la posibilidad de borrar y crear tablas en la
 -- base de datos tema8.
+GRANT DROP, CREATE ON tema8.* TO usuario2@localhost;
+
+-- 23. Para el usuario2 desde el equipo local, permite que pueda actualizar el valor de la
+-- columna jefe de la tabla empleados e insertar en comisión.
+GRANT UPDATE(jefe), INSERT(comision) ON tema5.empleados TO usuario2@localhost;
+
+-- 24. Inserta una comisión de 666666 en la tabla empleados de la base de datos tema8.
+INSERT INTO tema5.empleados (comision) VALUES (666666);
+
+-- 27. Limita al user1 a tener como mucho dos conexiones simultáneas y comprueba que no
+-- se pueden establecer tres conexiones simultáneas.
+ALTER USER user1@"%" IDENTIFIED BY 'pass' WITH MAX_USER_CONNECTIONS_PER_HOUR 2;
+  
+-- 28. Limita al user1 a poder realizar como mucho 10 consultas a la hora y compruébalo.
+ALTER USER user1@"%" IDENTIFIED BY 'pass' WITH MAX_QUERIES_PER_HOUR 10;
+
+-- 30. Actualiza los privilegios
+FLUSH PRIVILEGES;
