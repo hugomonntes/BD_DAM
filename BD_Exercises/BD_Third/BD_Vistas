@@ -1,0 +1,8 @@
+ -- 31,32,33,34,35,36,42,43,45,47,49,53,55
+-- 31.Crea una vista con nombre ed que muestre toda la información de la tabla empleados
+-- relacionada con la información de la tabla departamentos.
+CREATE VIEW
+  empleados.ed () AS ed;
+
+-- 32. Muestra a partir de la vista creada en el ejercicio anterior las siguientes columnas: el
+-- apellido de los empleados, su oficio y el nombre del departamento al que pertenecen.
