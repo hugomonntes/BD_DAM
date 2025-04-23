@@ -34,3 +34,11 @@ FROM
 -- 34.A partir de la vista anterior define la vista ed2 que muestre el nombre del empleado y
 -- el nombre del departamento.
 
+CREATE OR REPLACE VIEW
+  ed2 (nombre, departamento) AS
+SELECT
+  apellido,
+  nombre
+FROM
+  empleados
+  JOIN depart USING (iddepart);
