@@ -1,8 +1,36 @@
- -- 31,32,33,34,35,36,42,43,45,47,49,53,55
+-- 31,32,33,34,35,36,39,,40,42,43,45,47,49,53,55
 -- 31.Crea una vista con nombre ed que muestre toda la información de la tabla empleados
 -- relacionada con la información de la tabla departamentos.
 CREATE VIEW
-  empleados.ed () AS ed;
+  ed AS
+SELECT
+  *
+FROM
+  empleados
+  JOIN depart USING (iddepart);
 
 -- 32. Muestra a partir de la vista creada en el ejercicio anterior las siguientes columnas: el
 -- apellido de los empleados, su oficio y el nombre del departamento al que pertenecen.
+SELECT
+  apellido,
+  oficio,
+  nombre
+FROM
+  ed;
+
+-- 33. Modifica la vista ed con replace para que tenga las columnas: apellido, oficio y
+-- nombre del departamento cambiando sus nombres a los siguientes: nombre, oficio y
+-- departamento.
+CREATE OR REPLACE VIEW
+  ed (nombre, oficio, departamento) AS
+SELECT
+  apellido,
+  oficio,
+  nombre
+FROM
+  empleados
+  JOIN depart USING (iddepart);
+
+-- 34.A partir de la vista anterior define la vista ed2 que muestre el nombre del empleado y
+-- el nombre del departamento.
+
