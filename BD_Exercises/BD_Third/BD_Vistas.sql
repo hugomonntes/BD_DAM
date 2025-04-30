@@ -156,4 +156,4 @@ SELECT
   *
 FROM
   empleados
-  JOIN depart USING (IDDEPART);
+  RIGHT JOIN depart USING (IDDEPART);
