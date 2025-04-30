@@ -114,6 +114,46 @@ FROM
   notas_asig_alu
 WHERE
   nota >= 5;
-  
+
 -- 45. Modifica la vista notasAlu con alter view y añádele el campo Apellido.
-ALTER VIEW notasAlu AS SELECT (nombre, asignatura, nota, apellidos) FROM notas_asig_alu;
+ALTER VIEW
+  notasAlu AS
+SELECT
+  (nombre, asignatura, nota, apellidos)
+FROM
+  notas_asig_alu;
+
+-- 47.Crea la vista salarios que muestre el apellido y la localización de los empleados
+-- que tienen salario mayor que 1200 menos los que tienen comisión mayor que 100.
+CREATE VIEW
+  salarios (apellido, localización) AS
+SELECT
+  apellido,
+  loc
+FROM
+  empleados
+  JOIN depart USING (IDDEPART)
+WHERE
+  salario > 1200
+  AND ifnull(comision, 0) < 100;
+
+-- 49.Crea la vista empleados que muestra los departamentos de los empleados. ¿Qué sucede?
+CREATE VIEW
+  empleados (empleado, departamentos) AS
+SELECT
+  apellido,
+  nombre
+FROM
+  empleados
+  JOIN depart USING (iddepart);
+-- no se puede crear una vista con el nombre de la tabla ya creada
+
+-- 53.Crea la vista led que relacione los usuarios con sus departamentos 
+-- incluyendo los departamentos que no tengan usuarios asignados. Consulta los datos que contiene.
+CREATE VIEW
+  led AS
+SELECT
+  *
+FROM
+  empleados
+  JOIN depart USING (IDDEPART);
