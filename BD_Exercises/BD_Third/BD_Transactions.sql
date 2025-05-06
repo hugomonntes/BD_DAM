@@ -1,19 +1,27 @@
+
 -- 56.Crea la tabla transacción con un campo llamado campo de tipo entero y el motor de
 -- almacenamiento InnoDB.
-
+CREATE DATABASE TRANSACCION;
+CREATE TABLE pruebas(campo INT);
 -- 57. Inserta en la tabla los valores 10, 11, 12 y 14.
-
+INSERT INTO pruebas VALUES(14);
 -- 58.Comienza una transacción e inserta el valor 20 en la tabla transación. Muestra los
 -- datos.
-    START TRANSACTION
-
-    INSERT INTO 
-
-
+START TRANSACTION;
+INSERT INTO pruebas VALUES(20);
+INSERT INTO pruebas VALUES(20);
+INSERT INTO pruebas VALUES(20);
+INSERT INTO pruebas VALUES(20);
+INSERT INTO pruebas VALUES(20);
+SELECT * FROM pruebas;
 -- 59. Deshaz la transacción y vuelve a mostrar los dados. ¿Qué ha sucedido?.  
-
+ROLLBACK;
+SELECT * FROM pruebas;
 -- 60.Comienza una transacción e inserta el valor 20. Muestra los datos. Cierra la conexión
 -- con la base de datos. Vuelve a conectarte y muestra los datos. ¿Qué ha sucedido?.
+START TRANSACTION;
+INSERT INTO pruebas VALUES(20);
+SELECT * FROM pruebas;
 -- 61.Abre dos conexiones contra la base de datos. Las llamaremos conexión1 y conexión2.
 -- Comprueba que tienen identificadores distintos mediante los comando: select
 -- CONNECTION_ID() y show Processlist
