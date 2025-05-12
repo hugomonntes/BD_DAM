@@ -15,6 +15,9 @@ UNLOCK TABLES;
 -- bloqueo de lectura sobre la tabla transacción, en la segunda un bloqueo de escritura y
 -- en la tercera un bloqueo de lectura. Consulta los datos en las tres conexiones. ¿Qué
 -- sucede?.
+LOCK TABLE prueba READ;
+LOCK TABLE prueba WRITE;
+LOCK TABLE prueba READ;
 -- 72. En dos conexiones obtén dos bloqueos de lectura para la tabla transacción. Visualiza
 -- los datos desde las dos conexiones ¿Qué sucede?. Ahora, desde una tercera conexión,
 -- obtén un bloqueo de escritura. ¿Qué sucede?. ¿Cuándo, la conexión 3, puede obtener
