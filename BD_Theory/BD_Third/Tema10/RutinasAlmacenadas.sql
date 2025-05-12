@@ -1,0 +1,42 @@
+-- RUTINAS ALMACENADAS
+-- Definición: Las rutinas alamacenadas son funciones SQL definidas por el usuario que se ejecutan y se guardan directamente en el servidor
+
+    * DELIMITER (SIMBOLO)
+        IF n IS NULL
+            RETURN 0;
+        ELSE
+            RETURN 1;
+        END SIMBOLO
+    * DELIMITER ;
+
+-- PRIVILEGIOS ALMACENADOS
+    * CREATE ROUTINE -- Crear rutina
+    * ALTER ROUTINE -- Editar rutina
+
+    -- HAY DOS TIPOS: (DIFERENCIAS)
+        * FUNCIONES: (INSERT, UPDATE...), (PARÁMETROS DE ENTRADA), (RETURN UN ÚNICO VALOR)
+        * PROCEDIMIENTOS: (CALL), (VARIABLES COMO PARÁMETROS IN (ENTRADA), OUT (SALIDA), INOUT ()), (PUEDE RETURN DE CONSULTAS, QUE SE EJECUTAN AL LLAMAR AL PROCEDIMIENTO Y VALORES)
+        
+        --> 1º DIFERENCIA: EJECUCCIÓN (FUNCIONES SE EJECUTAN CON INSERT, UPDATE... Y PROCEDIMIENTOS CON CALL)
+        --> 2º DIFERENCIA: PARÁMETROS (FUNCIONES SOLO TIENE PARÁMETROS DE ENTRADA, PROCEDIMIENTOS HAY QUE ESPECIFICAR SI ES DE ENTREDA O SALIDA)
+            --> * EJEMPLO: mitad(IN x int, OUT y int)
+        --> 3º DIFERENCIA: RETORNO (LAS FUNCIONES DEVUELVEN UN ÚNICO VALOR, RETURN DE CONSULTAS QUE SE EJECUTAN AL LLAMAR AL PROCEDIMIENTO Y VALORES)
+
+        * CREATE OR REPLACE {FUNCTION || PROCEDURE} nombre_rutina (parametros) RETURNS tipo_dato -- (INT, VARCHAR...)
+        * CREATE OR REPLACE {FUNCTION || PROCEDURE} nombre_rutina (parametros) RETURNS tipo_dato **[[NOT] DETERMINISTIC]** -- SOLO FUNCIONES (NO PROCEDIMIENTOS) (NO DETERMINISTA SIEMPRE DEVUELVE LO MISMO)
+        * CREATE OR REPLACE {FUNCTION || PROCEDURE} nombre_rutina (parametros) RETURNS tipo_dato **[[NOT] DETERMINISTIC]** **[SQL SECURITY {DEFINER || INVOKER}]** -- (LO QUE QUIERE DECIR CON DEFINER ES QUE SE PUEDE VER DEPENDIENDO DE LOS PRIVILEGIOS DEL CREADOR DEL DEFINER, PERO SI PONER INVOKER EJECUTAS CON TUS PRIVILEGIOS OSEA QUE IGUAL NO PUEDES VER TODO)
+        * SIEMPRE SE ACABA CON **RETURN**
+
+        * nombre_funcion ([IN | OUT | INOUT] nombre_parametro tipo_dato) -- SOLO SE USA PARA PROCEDIMIENTOS
+            --> EJEMPLO:
+                -- SET @nombre = ""; 
+                -- SET @aumento = 100; 
+                -- DELIMITER $
+                -- CREATE PROCEDURE subidaSalario (IN id1 INT, OUT nombre VARCHAR(255), INOUT aumento INT)
+                -- BEGIN
+                --  SELECT nombre FROM empleados WHERE id = id1;
+                --  UPDATE empleados SET salario += aumento;
+                --  SET aumento = aumento * 2;
+                -- END $
+                -- DELIMITER ;
+        * CALL subidaSalario(1, @nombre, @aumento)
