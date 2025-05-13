@@ -34,9 +34,15 @@
                 -- DELIMITER $
                 -- CREATE PROCEDURE subidaSalario (IN id1 INT, OUT nombre VARCHAR(255), INOUT aumento INT)
                 -- BEGIN
-                --  SELECT nombre FROM empleados WHERE id = id1;
+                --  SELECT nombre INTO nombre1 FROM empleados WHERE id = id1;
                 --  UPDATE empleados SET salario += aumento;
                 --  SET aumento = aumento * 2;
                 -- END $
                 -- DELIMITER ;
         * CALL subidaSalario(1, @nombre, @aumento)
+
+    * ALTER [FUNCTION || PROCEDURE] nombre_rutina -- MODIFICAR RUTINAS ALMACENADAS
+    * DROP [FUNCTION || PROCEDURE] nombre_rutina -- BORRAR RUTINA 
+    * SHOW [FUNCTION || PROCEDURE] STATUS -- MUESTRA RUTINAS ALMACENADAS 
+    * SHOW [FUNCTION || PROCEDURE] STATUS LIKE / WHERE -- MUESTRA RUTINAS ALMACENADAS CON FILTROS
+    * SHOW CREATE [FUNCTION || PROCEDURE] nombre_rutina -- MUESTRA SENTENCIA DE CREACIÓN
