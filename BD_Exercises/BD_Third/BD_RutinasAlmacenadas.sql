@@ -85,6 +85,78 @@ END $$
 DELIMITER ;
 
 CALL insertarNuevoAlumno("Carlos","Costa",194,11);
+
 --  18. Crea una función que pasándole un oficio nos devuelva el número de empleados
 --  con ese oficio. Se ha de crear el procedimiento para el usuario root conectado
 --  desde la maquina local.
+DELIMITER $$
+
+--  19. Crea un procedimiento, que pasándole un oficio, nos devuelva el número de
+--  empleados con ese oficio.
+DELIMITER $$
+CREATE OR REPLACE PROCEDURE contarEmpleadosOficio(IN oficio1 VARCHAR(255), OUT contadorOficios INT) 
+BEGIN 
+SELECT COUNT(*) INTO contadorOficios FROM empleados WHERE OFICIO = oficio1;
+END $$
+DELIMITER ;
+
+SET @contador = 0;
+CALL contarEmpleadosOficio("Vendedor", @contador);
+SELECT @contador;
+--  20. Vamos a crear una función determinista que califica el salario de los empleados
+--  con una cadena de texto: si el salario es superior o igual 5000 Alto, si es mayor
+--  o igual que 3000 pero menor 5000 Medio y bajo en los demás casos. Luego de la
+--  definición del procedimiento muestra los datos de los empleados con su salario
+--  calificado.
+DELIMITER $$
+CREATE OR REPLACE FUNCTION calificarSalario(salario INT) RETURNS VARCHAR(255)
+DETERMINISTIC
+BEGIN
+IF salario >= 5000 THEN RETURN "Alto";
+ELSEIF salario >= 3000 AND salario < 5000 THEN RETURN "Medio";
+ELSE RETURN "Bajo";
+END IF;
+END $$
+DELIMITER ;
+
+SELECT calificarSalario(1);
+
+--  21. Crea un procedimiento que busque en la tabla empleados todos los empleados
+--  en que sus apellidos cumpla con un patrón.
+DELIMITER $$ 
+CREATE PROCEDURE buscarPorApellido(INOUT patron VARCHAR(255))
+BEGIN
+SELECT * FROM empleados WHERE apellido LIKE 'patron';
+END $$
+DELIMITER ;
+
+--  22. Crea un procedimiento que indicado un empleado le aumente la comisión en un
+--  cifra determinada.
+DELIMITER $$
+CREATE PROCEDURE aumentarComision(IN empleado INT, IN aumento INT)
+BEGIN
+UPDATE empleados SET salario = salario + aumento WHERE CODEMP = empleado;
+END $$
+DELIMITER ;
+
+
+--  23. Crea un función que dado un empleado calcule el número de años que lleva en la
+--  empresa.
+DELIMITER $ 
+CREATE OR REPLACE FUNCTION numeroAños(TRABAJADOR VARCHAR(255)) RETURNS INT
+BEGIN
+DECLARE Años int;
+SELECT TIMESTAMPDIFF(YEAR, FECHA_ALT, CURRENT_DATE) INTO Años FROM empleados WHERE APELLIDO = TRABAJADOR;
+RETURN Años;
+END $
+DELIMITER ;
+
+SELECT numeroAños('Sanchez');
+
+--  24. Crea un procedimiento que busque en la tabla empleados todos los empleados
+--  en que sus apellidos cumpla con un patrón. Además deberá mostrar el número
+--  de empleados que cumple el patrón. Ha de tener el comentario de "busca
+--  procedimiento".
+--  25. Crea un procedimiento que busque en la tabla empleados todos los empleados
+--  en que su apellidos cumpla con dos patrones. Si uno de ellos es nulo no se ha de
+--  tener en cuenta.
