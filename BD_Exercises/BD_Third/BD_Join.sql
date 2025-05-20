@@ -51,7 +51,7 @@ FROM
   asignaturas
   JOIN alumnos
   JOIN notas ON asignaturas.COD = notas.asignatura
-  and alumnos.codigo = notas.alumno
+  AND alumnos.codigo = notas.alumno
 WHERE
   asignaturas.nombre like 'FOL';
 
@@ -64,7 +64,7 @@ FROM
   JOIN notas ON asignaturas.COD = notas.asignatura
   AND alumnos.codigo = notas.alumno
 WHERE
-  alumnos.nombre like 'Ray';
+  alumnos.nombre LIKE 'Ray';
 
 -- 58 Mostrar el apellido, salario y nombre del departamento de los empleados que tengan
 -- el mismo oficio que GIL y que no tengan comisión
@@ -94,14 +94,7 @@ FROM
   empleados
   JOIN depart USING (iddepart)
 WHERE
-  depart.nombre = (
-    SELECT
-      depart.nombre
-    FROM
-      depart
-    WHERE
-      depart.nombre = "Contabilidad"
-  );
+  depart.nombre = 'Contabilidad';
 
 -- 60. Los empleados que ganan más que cualquier empleado del departamento de ventas.
 SELECT
