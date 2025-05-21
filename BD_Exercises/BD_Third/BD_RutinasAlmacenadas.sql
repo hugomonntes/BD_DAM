@@ -145,7 +145,7 @@ DELIMITER ;
 DELIMITER $ 
 CREATE OR REPLACE FUNCTION numeroAños(TRABAJADOR VARCHAR(255)) RETURNS INT
 BEGIN
-DECLARE Años int;
+DECLARE Años INT;
 SELECT TIMESTAMPDIFF(YEAR, FECHA_ALT, CURRENT_DATE) INTO Años FROM empleados WHERE APELLIDO = TRABAJADOR;
 RETURN Años;
 END $
@@ -157,6 +157,12 @@ SELECT numeroAños('Sanchez');
 --  en que sus apellidos cumpla con un patrón. Además deberá mostrar el número
 --  de empleados que cumple el patrón. Ha de tener el comentario de "busca
 --  procedimiento".
+
 --  25. Crea un procedimiento que busque en la tabla empleados todos los empleados
 --  en que su apellidos cumpla con dos patrones. Si uno de ellos es nulo no se ha de
 --  tener en cuenta.
+DELIMITER $$
+CREATE PROCEDURE buscar(IN patron1 VARCHAR(255), IN patron2 VARCHAR(255))
+BEGIN
+IF patron1 IS NULL 
+SELECT apellido FROM empleados WHERE apellido LIKE 'patron1' AND apellido LIKE 'patron2'
