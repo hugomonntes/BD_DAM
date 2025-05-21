@@ -157,7 +157,14 @@ SELECT numeroAños('Sanchez');
 --  en que sus apellidos cumpla con un patrón. Además deberá mostrar el número
 --  de empleados que cumple el patrón. Ha de tener el comentario de "busca
 --  procedimiento".
-
+DELIMITER $
+CREATE OR REPLACE PROCEDURE APELLIDOSYNUM (IN PATRON VARCHAR(255)) 
+COMMENT 'busca procedimiento'
+BEGIN
+SELECT COUNT(*) AS 'numEmpleados' FROM empleados WHERE apellido = PATRON;
+SELECT * FROM empleados WHERE apellido = PATRON;
+END $ 
+DELIMITER ;
 --  25. Crea un procedimiento que busque en la tabla empleados todos los empleados
 --  en que su apellidos cumpla con dos patrones. Si uno de ellos es nulo no se ha de
 --  tener en cuenta.
@@ -172,4 +179,12 @@ ELSE THEN
 SELECT apellido FROM empleados WHERE apellido LIKE 'patron1' AND apellido LIKE 'patron2';
 END IF;
 END $$
+DELIMITER ;
+
+DELIMITER $
+CREATE OR REPLACE PROCEDURE APELLIDOSYNUM (IN PATRON VARCHAR(255), IN PATRON1 VARCHAR(255)) COMMENT 'busca procedimiento'
+BEGIN
+SELECT COUNT(*) AS 'numEmpleados' FROM empleados WHERE apellido = ifnull(PATRON,'') AND apellido = ifnull(PATRON1,'');
+SELECT * FROM empleados WHERE apellido = ifnull(PATRON,'') AND apellido = ifnull(PATRON1,'');
+END $ 
 DELIMITER ;
