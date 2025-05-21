@@ -164,5 +164,12 @@ SELECT numeroAños('Sanchez');
 DELIMITER $$
 CREATE PROCEDURE buscar(IN patron1 VARCHAR(255), IN patron2 VARCHAR(255))
 BEGIN
-IF patron1 IS NULL 
-SELECT apellido FROM empleados WHERE apellido LIKE 'patron1' AND apellido LIKE 'patron2'
+IF patron1 IS NULL THEN 
+SELECT apellido FROM empleados WHERE apellido LIKE 'patron2';
+ELSEIF patron2 IS NULL THEN 
+SELECT apellido FROM empleados WHERE apellido LIKE 'patron1';
+ELSE THEN 
+SELECT apellido FROM empleados WHERE apellido LIKE 'patron1' AND apellido LIKE 'patron2';
+END IF;
+END $$
+DELIMITER ;
