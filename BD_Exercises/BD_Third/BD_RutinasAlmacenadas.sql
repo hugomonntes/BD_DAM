@@ -194,7 +194,8 @@ DELIMITER ;
 -- ejecutar con los permisos del usuario que lo invoca y se debe crear para el
 -- usuario user desde la maquina local.
 DELIMITER $$
-CREATE PROCEDURE tipoSalario(IN codigoEmpleado INT)
+CREATE DEFINER = user@localhost PROCEDURE tipoSalario(IN codigoEmpleado INT)
+
 BEGIN
 DECLARE varSalario INT
 DECLARE tipo VARCHAR(255)
@@ -211,3 +212,26 @@ DELIMITER ;
 -- nos devolverá el número de empleado con un salario igual al primer parámetro.
 -- Si vale 1 el número de empleados con un salario mayor y si vale -1 el número de
 -- empleados con un salario menor.
+DELIMITER $$
+CREATE or replace function elegirSalario(sal INT, num INT) RETURNS INT
+BEGIN
+	IF num = 0 THEN RETURN (SELECT COUNT(*) FROM empleados WHERE SALARIO = SAL);
+	ELSEIF num = 1 THEN RETURN (SELECT COUNT(*) FROM empleados WHERE SALARIO > SAL);
+	ELSEIF num = -1 THEN RETURN (SELECT COUNT(*) FROM empleados WHERE SALARIO < SAL);
+ELSE RETURN 0;
+END IF;
+END $$
+DELIMITER ;
+
+
+DELIMITER $$
+CREATE or replace function salario27(sal INT, num INT) RETURNS INT
+BEGIN
+CASE
+	WHEN num = 0 then RETURN (SELECT COUNT(*) FROM empleados WHERE SALARIO = SAL);
+	WHEN num = 1 then RETURN (SELECT COUNT(*) FROM empleados WHERE SALARIO > SAL);
+	WHEN num = -1 then RETURN (SELECT COUNT(*) FROM empleados WHERE SALARIO < SAL);
+ELSE RETURN 0;
+END CASE;
+END $$
+DELIMITER ;
