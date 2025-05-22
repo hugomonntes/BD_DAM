@@ -184,7 +184,30 @@ DELIMITER ;
 DELIMITER $
 CREATE OR REPLACE PROCEDURE APELLIDOSYNUM (IN PATRON VARCHAR(255), IN PATRON1 VARCHAR(255)) COMMENT 'busca procedimiento'
 BEGIN
-SELECT COUNT(*) AS 'numEmpleados' FROM empleados WHERE apellido = ifnull(PATRON,'') AND apellido = ifnull(PATRON1,'');
-SELECT * FROM empleados WHERE apellido = ifnull(PATRON,'') AND apellido = ifnull(PATRON1,'');
-END $ 
+SELECT apellido FROM empleados WHERE apellido LIKE IFNULL(PATRON,'%') AND apellido LIKE IFNULL(PATRON1,'%');
+END $
 DELIMITER ;
+
+-- 26. Crea un procedimiento que indicándole un código de empleado nos devuelva el
+-- tipo de salario: El cual puede ser bajo si cobra menos de 2000, medio si cobra
+-- 2000 o más pero menos de 4000 y alto el resto. El procedimiento se ha de
+-- ejecutar con los permisos del usuario que lo invoca y se debe crear para el
+-- usuario user desde la maquina local.
+DELIMITER $$
+CREATE PROCEDURE tipoSalario(IN codigoEmpleado INT)
+BEGIN
+DECLARE varSalario INT
+DECLARE tipo VARCHAR(255)
+SELECT salario INTO varSalario FROM empleados WHERE CODEMP = codigoEmpleado;
+IF varSalario < 2000 THEN SET tipo = "Bajo";
+ELSEIF varSalario >= 2000 OR varSalario < 4000 THEN SET tipo = "Medio";
+ELSE SET tipo = "Alto";
+END IF;
+SELECT tipo;
+END $$
+DELIMITER ;
+-- 27. Crea una función con dos parámetros: El primero será un número entero que
+-- representara un salario, el segundo será 0, 1 o -1. Si el segundo parámetro es 0
+-- nos devolverá el número de empleado con un salario igual al primer parámetro.
+-- Si vale 1 el número de empleados con un salario mayor y si vale -1 el número de
+-- empleados con un salario menor.
