@@ -145,7 +145,7 @@ DELIMITER ;
 DELIMITER $ 
 CREATE OR REPLACE FUNCTION numeroAños(TRABAJADOR VARCHAR(255)) RETURNS INT
 BEGIN
-DECLARE Años int;
+DECLARE Años INT;
 SELECT TIMESTAMPDIFF(YEAR, FECHA_ALT, CURRENT_DATE) INTO Años FROM empleados WHERE APELLIDO = TRABAJADOR;
 RETURN Años;
 END $
@@ -157,6 +157,81 @@ SELECT numeroAños('Sanchez');
 --  en que sus apellidos cumpla con un patrón. Además deberá mostrar el número
 --  de empleados que cumple el patrón. Ha de tener el comentario de "busca
 --  procedimiento".
+DELIMITER $
+CREATE OR REPLACE PROCEDURE APELLIDOSYNUM (IN PATRON VARCHAR(255)) 
+COMMENT 'busca procedimiento'
+BEGIN
+SELECT COUNT(*) AS 'numEmpleados' FROM empleados WHERE apellido = PATRON;
+SELECT * FROM empleados WHERE apellido = PATRON;
+END $ 
+DELIMITER ;
 --  25. Crea un procedimiento que busque en la tabla empleados todos los empleados
 --  en que su apellidos cumpla con dos patrones. Si uno de ellos es nulo no se ha de
 --  tener en cuenta.
+DELIMITER $$
+CREATE PROCEDURE buscar(IN patron1 VARCHAR(255), IN patron2 VARCHAR(255))
+BEGIN
+IF patron1 IS NULL THEN 
+SELECT apellido FROM empleados WHERE apellido LIKE 'patron2';
+ELSEIF patron2 IS NULL THEN 
+SELECT apellido FROM empleados WHERE apellido LIKE 'patron1';
+ELSE THEN 
+SELECT apellido FROM empleados WHERE apellido LIKE 'patron1' AND apellido LIKE 'patron2';
+END IF;
+END $$
+DELIMITER ;
+
+DELIMITER $
+CREATE OR REPLACE PROCEDURE APELLIDOSYNUM (IN PATRON VARCHAR(255), IN PATRON1 VARCHAR(255)) COMMENT 'busca procedimiento'
+BEGIN
+SELECT apellido FROM empleados WHERE apellido LIKE IFNULL(PATRON,'%') AND apellido LIKE IFNULL(PATRON1,'%');
+END $
+DELIMITER ;
+
+-- 26. Crea un procedimiento que indicándole un código de empleado nos devuelva el
+-- tipo de salario: El cual puede ser bajo si cobra menos de 2000, medio si cobra
+-- 2000 o más pero menos de 4000 y alto el resto. El procedimiento se ha de
+-- ejecutar con los permisos del usuario que lo invoca y se debe crear para el
+-- usuario user desde la maquina local.
+DELIMITER $$
+CREATE DEFINER = user@localhost PROCEDURE tipoSalario(IN codigoEmpleado INT)
+
+BEGIN
+DECLARE varSalario INT
+DECLARE tipo VARCHAR(255)
+SELECT salario INTO varSalario FROM empleados WHERE CODEMP = codigoEmpleado;
+IF varSalario < 2000 THEN SET tipo = "Bajo";
+ELSEIF varSalario >= 2000 OR varSalario < 4000 THEN SET tipo = "Medio";
+ELSE SET tipo = "Alto";
+END IF;
+SELECT tipo;
+END $$
+DELIMITER ;
+-- 27. Crea una función con dos parámetros: El primero será un número entero que
+-- representara un salario, el segundo será 0, 1 o -1. Si el segundo parámetro es 0
+-- nos devolverá el número de empleado con un salario igual al primer parámetro.
+-- Si vale 1 el número de empleados con un salario mayor y si vale -1 el número de
+-- empleados con un salario menor.
+DELIMITER $$
+CREATE or replace function elegirSalario(sal INT, num INT) RETURNS INT
+BEGIN
+	IF num = 0 THEN RETURN (SELECT COUNT(*) FROM empleados WHERE SALARIO = SAL);
+	ELSEIF num = 1 THEN RETURN (SELECT COUNT(*) FROM empleados WHERE SALARIO > SAL);
+	ELSEIF num = -1 THEN RETURN (SELECT COUNT(*) FROM empleados WHERE SALARIO < SAL);
+ELSE RETURN 0;
+END IF;
+END $$
+DELIMITER ;
+
+
+DELIMITER $$
+CREATE or replace function salario27(sal INT, num INT) RETURNS INT
+BEGIN
+CASE
+	WHEN num = 0 then RETURN (SELECT COUNT(*) FROM empleados WHERE SALARIO = SAL);
+	WHEN num = 1 then RETURN (SELECT COUNT(*) FROM empleados WHERE SALARIO > SAL);
+	WHEN num = -1 then RETURN (SELECT COUNT(*) FROM empleados WHERE SALARIO < SAL);
+ELSE RETURN 0;
+END CASE;
+END $$
+DELIMITER ;
