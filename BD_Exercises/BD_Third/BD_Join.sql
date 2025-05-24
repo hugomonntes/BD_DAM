@@ -227,17 +227,6 @@ FROM
   depart
   JOIN empleados USING (iddepart);
 
--- 69. Muestra el apellido de los empleados junto al nombre de su departamento de los
--- empleados que trabajen en el departamento 30.
-SELECT
-  empleados.APELLIDO,
-  depart.NOMBRE
-FROM
-  depart
-  JOIN empleados USING (iddepart)
-WHERE
-  depart.IDDEPART = 30;
-
 -- 70. Muestra el apellido de los empleados junto al nombre de su departamento,
 -- incluyendo aquellos que no tienen departamento asignado.
 SELECT

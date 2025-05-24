@@ -21,7 +21,7 @@ SOLO APARECEN LOS DATOS DE LAS CONLUMNAS NOMBRE Y LOC DE LA TABLA DEPART (NO SE 
 -- 10.Crea de forma simultánea un usuario, user2, con clave pass2 y que solo puede
 -- acceder desde la máquina local y un usuario user3 que puede acceder desde el equipo
 -- de un compañero de clase con clave pass3
-CREATE USER user2@localhost IDENTIFIED BY 'pass2', user3@"%" IDENTIFIED BY 'pass3';
+CREATE USER user2@localhost IDENTIFIED BY 'pass2', user3@"%" IDENTIFIED BY 'pass3';--
 CREATE OR REPLACE USER user3@"%" IDENTIFIED BY 'pass3';
 
 -- 11. Permite que user2 tenga todos los privilegios sobre la base de datos tema8 y que
